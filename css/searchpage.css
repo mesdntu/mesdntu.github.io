@@ -102,8 +102,16 @@ h1 {
     border-radius: 20px;
     border: none;
     cursor: pointer;
-    box-shadow: 4px 1px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: 3px 1px 2px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease; /* 添加平滑过渡效果 */
 }
+
+.search_btn:hover {
+    background-color: #B9DDF6; /* 改变背景颜色 */
+    box-shadow: 3px 1px 2px rgba(0, 0, 0, 0.25); /* 增加阴影 */
+    transform: scale(1.05); /* 增加按钮的缩放效果 */
+}
+
 
 .question_tip {
     position: relative;
@@ -198,8 +206,8 @@ h1 {
 
 /* Add subtle zoom and shadow effect on hover */
 .prefix_box:hover {
-    transform: scale(1.05); /* Scale up by 5% on hover */
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15); /* Slightly enhanced shadow */
+    transform: scale(1.03); /* Scale up by 5% on hover */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1); /* Slightly enhanced shadow */
 }
 
 .prefix_box .prefix {
@@ -249,6 +257,7 @@ h1 {
     align-items: flex-start;
 }
 
+
 .owner_box p {
     font-size: 10px;
     font-weight: 400;
@@ -267,7 +276,7 @@ h1 {
     color: #000;
     cursor: pointer;
     text-align: left;
-    width: 63px;
+    width: 58px;
 }
 
 /* Browse All Owners Button */
@@ -278,13 +287,21 @@ h1 {
     margin: 40px auto;
     border: 1px solid #3789C2;
     border-radius: 20px;
-    background-color: transparent; /* Make background color transparent */
+    background-color: transparent;
     font-size: 14px;
     color: #3789C2;
     text-align: center;
     cursor: pointer;
     display: block;
-    line-height: 36px; /* Vertically centers the text */
+    line-height: 36px;
+    transition: all 0.3s ease; /* 添加平滑的过渡效果 */
+}
+
+.browse_btn:hover {
+    background-color: #3789C2; /* 鼠标悬停时更改背景颜色 */
+    color: white; /* 改变文本颜色 */
+    transform: scale(1.03); /* 增加按钮的缩放效果 */
+    box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
 }
 
 

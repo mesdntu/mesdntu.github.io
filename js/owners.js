@@ -95,6 +95,26 @@ function renderPage(page) {
     renderPagination();
 }
 
+function searchVessel() {
+    const searchInput = document.getElementById('search_input').value.trim();
+    const vesselSelect = document.getElementById('vessel_select').value;
+
+    // 确保输入框中有内容
+    if (searchInput) {
+        // 如果用户选择了船只名称
+        if (vesselSelect === 'vessel_name') {
+            window.location.href = `/pages/vessel.html?vessel=${encodeURIComponent(searchInput)}`;
+        } 
+        // 如果用户选择了船主名称
+        else if (vesselSelect === 'owner_name') {
+            window.location.href = `/pages/vessel.html?owner=${encodeURIComponent(searchInput)}`;
+        }
+    } else {
+        alert('Please input a valid vessel or owner name.');
+    }
+}
+
+
 // Render pagination buttons with ellipses for skipped pages
 function renderPagination() {
     const paginationContainer = document.getElementById('page_num');
