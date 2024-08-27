@@ -18,6 +18,24 @@ async function loadHeaderData() {
         console.error('Error loading CSV data:', error);
     }
 }
+function searchVessel() {
+    const searchInput = document.getElementById('search_input').value.trim();
+    const vesselSelect = document.getElementById('vessel_select').value;
+
+    // 确保输入框中有内容
+    if (searchInput) {
+        // 如果用户选择了船只名称
+        if (vesselSelect === 'vessel_name') {
+            window.location.href = `/pages/vessel.html?vessel=${encodeURIComponent(searchInput)}`;
+        } 
+        // 如果用户选择了船主名称
+        else if (vesselSelect === 'owner_name') {
+            window.location.href = `/pages/vessel.html?owner=${encodeURIComponent(searchInput)}`;
+        }
+    } else {
+        alert('Please input a valid vessel or owner name.');
+    }
+}
 
 // Get the URL parameter (prefix in this case)
 function getQueryParameter(name) {
@@ -67,7 +85,7 @@ function renderPage(page) {
         vesselItem.className = 'vessel_item';
         vesselItem.innerHTML = `
             <div class="vessel_name">${vessel.vesselName}</div>
-            <button class="vessel_btn">Click Here</button>
+            <button class="vessel_btn" onclick="goToVesselPage('${vessel.vesselName}')">Click Here</button>
         `;
         vesselList.appendChild(vesselItem);
 
@@ -78,6 +96,12 @@ function renderPage(page) {
 
     // Render the pagination buttons
     renderPagination();
+}
+
+// Navigate to vessel.html with the vessel name as a parameter
+function goToVesselPage(vesselName) {
+    const encodedVesselName = encodeURIComponent(vesselName);
+    window.location.href = `/pages/vessel.html?vessel=${encodedVesselName}`;
 }
 
 // Render pagination buttons with ellipses for skipped pages
@@ -126,24 +150,6 @@ function renderPagination() {
 
     // Append the buttons to the pagination container
     paginationButtons.forEach(button => paginationContainer.appendChild(button));
-}
-function searchVessel() {
-    const searchInput = document.getElementById('search_input').value.trim();
-    const vesselSelect = document.getElementById('vessel_select').value;
-
-    // 确保输入框中有内容
-    if (searchInput) {
-        // 如果用户选择了船只名称
-        if (vesselSelect === 'vessel_name') {
-            window.location.href = `/pages/vessel.html?vessel=${encodeURIComponent(searchInput)}`;
-        } 
-        // 如果用户选择了船主名称
-        else if (vesselSelect === 'owner_name') {
-            window.location.href = `/pages/vessel.html?owner=${encodeURIComponent(searchInput)}`;
-        }
-    } else {
-        alert('Please input a valid vessel or owner name.');
-    }
 }
 
 // Create a page button with the page number
