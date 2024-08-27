@@ -48,6 +48,7 @@ h1 {
     font-size: 16px;
     color: #151C64;
     text-align: center;
+    user-select: none;
 }
 
 .main_search {
@@ -104,6 +105,7 @@ h1 {
     cursor: pointer;
     box-shadow: 3px 1px 2px rgba(0, 0, 0, 0.25);
     transition: all 0.3s ease; /* 添加平滑过渡效果 */
+    user-select: none;
 }
 
 .search_btn:hover {
@@ -255,6 +257,15 @@ h1 {
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for scaling */
+    cursor: pointer; /* Change cursor to pointer */
+    user-select: none; /* Prevent text selection */
+}
+
+/* Add subtle zoom and shadow effect on hover */
+.owner_box:hover {
+    transform: scale(1.03); /* Scale up slightly on hover */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1); /* Slightly enhanced shadow */
 }
 
 
@@ -295,6 +306,7 @@ h1 {
     display: block;
     line-height: 36px;
     transition: all 0.3s ease; /* 添加平滑的过渡效果 */
+    user-select: none;
 }
 
 .browse_btn:hover {
