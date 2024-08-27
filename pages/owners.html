@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Collection</title>
+    <link rel="stylesheet" href="/css/owners.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="/images/ntu_logo.png" alt="NTU Logo" class="ntu_logo">
+            <img src="/images/mesd_logo.png" alt="MESD Logo" class="mesd_logo">
+        </div>
+        <h1>Check the Biofuel Compatibility for Your Vessel</h1>
+
+        <!-- Search Bar Section -->
+        <section class="main_search" style="position: relative;">
+            <div class="search_container">
+                <select name="vessel" id="vessel_select">
+                    <option value="vessel_name">Vessel Name</option>
+                    <option value="owner_name">Owner Name</option>
+                </select>
+                <div class="separator"></div>
+                <input type="text" id="search_input" placeholder="Input Vessel Name / Owner Name">
+                <ul id="suggestions_list" class="suggestions"></ul>
+                <button class="search_btn">Search</button>
+            </div>
+            <div class="question_tip">
+                <div class="circle">?</div>
+                <div class="tooltip">Please input the Vessel Name or Owner Name in the format "VesselName123" or "OwnerName456".</div>
+            </div>
+        </section>
+    </header>
+
+    <!-- Owners Collection Section -->
+    <section class="owners_section">
+        <div class="title_container">
+            <h2 id="owners_title">Owners Collection</h2>
+            <button class="back_btn" onclick="goBack()">⬅ Back</button>
+        </div>
+
+        <div class="column_name">
+            <div class="column_header">Owner Name</div>
+            <div class="column_header">Vessel Number</div>
+        </div>
+
+        <div class="owners_list" id="owners_list">
+            <!-- Owner items will be dynamically inserted here -->
+        </div>
+
+        <div class="pagination">
+            <span id="page_num"></span>
+        </div>
+    </section>
+
+    <!-- Alphabet Sidebar -->
+    <div class="alphabet_sidebar">
+        <div>A</div>
+        <div>B</div>
+        <div>C</div>
+        <div>D</div>
+        <div>E</div>
+        <div>F</div>
+        <div>G</div>
+        <div>H</div>
+        <div>I</div>
+        <div>J</div>
+        <div>K</div>
+        <div>...</div>
+        <div>Z</div>
+    </div>
+
+    <footer>
+        <p>© 2024 MESD. All Rights Reserved.</p>
+    </footer>
+
+    <script src="/js/owners.js"></script>
+</body>
+
+</html>

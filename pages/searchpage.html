@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner and Prefix Collection</title>
+    <link rel="stylesheet" href="/css/searchpage.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="/images/ntu_logo.png" alt="NTU Logo" class="ntu_logo">
+            <img src="/images/mesd_logo.png" alt="MESD Logo" class="mesd_logo">
+        </div>
+        <h1>Check the Biofuel Compatibility for Your Vessel</h1>
+        
+        <!-- Search Bar Section -->
+        <section class="main_search" style="position: relative;">
+            <div class="search_container">
+                <select name="vessel" id="vessel_select">
+                    <option value="vessel_name">Vessel Name</option>
+                    <option value="owner_name">Owner Name</option>
+                </select>
+                <div class="separator"></div>
+                <input type="text" id="search_input" placeholder="Input Vessel Name / Owner Name">
+                <ul id="suggestions_list" class="suggestions"></ul>
+                <button class="search_btn" onclick="searchVessel()">Search</button>
+            </div>
+            <div class="question_tip">
+                <div class="circle">?</div>
+                <div class="tooltip">Please input the Vessel Name or Owner Name in the format "VesselName123" or "OwnerName456".</div>
+            </div>
+        </section>
+    </header>
+
+    <!-- Prefix Collection -->
+    <section class="prefix_section">
+        <h2>Prefix Collection</h2>
+        <div class="prefix_group">
+            <div class="prefix_box">
+                <span class="prefix">SB</span>
+                <span class="description">Passenger Launch / Ferry Boat</span>
+            </div>
+            <div class="prefix_box">
+                <span class="prefix">SC</span>
+                <span class="description">Supply Vessel / Barge</span>
+            </div>
+            <div class="prefix_box">
+                <span class="prefix">SP</span>
+                <span class="description">Bunker Tanker / Product Tanker</span>
+            </div>
+            <div class="prefix_box">
+                <span class="prefix">ST</span>
+                <span class="description">Tug Boat</span>
+            </div>
+            <div class="prefix_box">
+                <span class="prefix">SR</span>
+                <span class="description">Others</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Owner Collection -->
+    <section class="owner_section">
+        <h2>Owner Collection</h2>
+        <div class="owner_group">
+            <div class="owner_box">
+                <p>ANG KOK MENG LAUNCH SERVICE PTE LTD</p>
+                <button class="owner_btn">7 Vessels</button>
+            </div>
+            <div class="owner_box">
+                <p>CRYSTAL MARITIME PTE LTD</p>
+                <button class="owner_btn">7 Vessels</button>
+            </div>
+            <div class="owner_box">
+                <p>PSA MARINE PTE LTD</p>
+                <button class="owner_btn">7 Vessels</button>
+            </div>
+            <div class="owner_box">
+                <p>MARCO POLO SHIPPING CO P L</p>
+                <button class="owner_btn">7 Vessels</button>
+            </div>
+            <div class="owner_box">
+                <p>YORK LAUNCH SERVICE PTE LTD</p>
+                <button class="owner_btn">7 Vessels</button>
+            </div>
+            <div class="owner_box">
+                <p>SINGAPORE SALVAGE ENGINEERS PL</p>
+                <button class="owner_btn">7 Vessels</button>
+            </div>
+            <div class="owner_box">
+                <p>CHUA KOK HENG</p>
+                <button class="owner_btn">7 Vessels</button>
+            </div>
+            <div class="owner_box">
+                <p>KIM HOCK BEE MARINE PTE LTD</p>
+                <button class="owner_btn">7 Vessels</button>
+            </div>
+            <div class="owner_box">
+                <p>MARINA TECHNOLOGY & CONSTRUCTION PTE</p>
+                <button class="owner_btn">7 Vessels</button>
+            </div>
+            <div class="owner_box">
+                <p>MARINA TECHNOLOGY & CONSTRUCTION PTE</p>
+                <button class="owner_btn">7 Vessels</button>
+            </div>
+            <div class="owner_box">
+                <p>MARINA TECHNOLOGY & CONSTRUCTION PTE</p>
+                <button class="owner_btn">7 Vessels</button>
+            </div>
+            <div class="owner_box">
+                <p>MARINA TECHNOLOGY & CONSTRUCTION PTE</p>
+                <button class="owner_btn">7 Vessels</button>
+            </div>
+        </div>
+
+        <!-- Browse All Owners Button -->
+        <button class="browse_btn" onclick="window.location.href='owners.html'">Browse All Owners →</button>
+    </section>
+
+    <footer>
+        <p>© 2024 MESD. All Rights Reserved.</p>
+    </footer>
+
+    <script src="/js/searchpage.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,417 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arimo', sans-serif;
+}
+
+body {
+    background-color: #F5F5F7;
+    color: #000;
+}
+
+/* Header Section */
+header {
+    width: 100%;
+    height: 226px;
+    background-color: #B9DDF6;
+    position: relative;
+    text-align: center;
+}
+
+.logo img {
+    position: absolute;
+    top: 10px;
+}
+
+.ntu_logo {
+    width: 370px;
+    height: 68px;
+    left: 13px;
+}
+
+.mesd_logo {
+    width: 48px;
+    height: 49px;
+    right: 20px;
+}
+
+h1 {
+    position: absolute;
+    width: 100%;
+    top: 83px;
+    font-family: 'Arimo', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #151C64;
+    text-align: center;
+}
+
+.main_search {
+    position: absolute;
+    top: 120px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search_container {
+    display: flex;
+    align-items: center;
+    width: 700px;
+    height: 60px;
+    background-color: white;
+    border-radius: 30px;
+    padding: 0 20px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.search_container select {
+    width: 150px;
+    border: none;
+    padding: 10px;
+    border-radius: 30px;
+    outline: none;
+    background: transparent;
+}
+
+.search_container input {
+    width: 400px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.separator {
+    width: 1px;
+    height: 40px;
+    background-color: #ccc;
+    margin: 0 10px;
+}
+
+.search_btn {
+    background-color: #B9DDF6;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 4px 1px 5px rgba(0, 0, 0, 0.25);
+}
+
+.question_tip {
+    position: relative;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.circle {
+    width: 30px;
+    height: 30px;
+    background-color: #3789C2;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.tooltip {
+    visibility: hidden;
+    width: 200px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #3789C2;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 12px;
+}
+
+.question_tip.clicked .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Titles Styling */
+.title-section {
+    margin: 50px auto 20px auto;
+    width: 75%;
+    text-align: left;
+}
+
+.title-section h2 {
+    font-size: 16px;
+    color: #151C64;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.title-section .line {
+    width: 100%;
+    border-top: 1px solid #939191; /* Consistent 1px border */
+    margin-bottom: 30px;
+}
+
+/* Vessel Info Section */
+.vessel_info {
+    width: 75%;
+    margin: 40px auto;
+    position: relative;
+    padding: 0 20px;
+}
+
+.compatibility_status {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.status_section, .next_steps_section {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.11);
+    width: 45%;
+
+    padding: 10px;
+}
+
+.status_section {
+    display: flex;
+    align-items: center;
+}
+
+.status_content {
+    display: flex;
+    align-items: center;
+}
+
+.green_icon {
+    width: 32px;
+    height: 32px;
+    background-color: #35EA1E;
+    background-image: url('/images/check.png');
+    background-size: 16px 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.compatible_text h2 {
+    font-size: 20px;
+    color: #35EA1E;
+    margin: 0;
+}
+
+.compatible_text p {
+    font-size: 14px;
+    font-style: italic;
+    color: #575656;
+    margin: 5px 0 0;
+}
+
+.next_steps_section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.11);
+    padding: 20px;
+}
+
+.steps_content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.steps_icon {
+    width: 32px;
+    height: 32px;
+    background-image: url('/images/steps.png');
+    background-size: 20px 23px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    margin-right: 15px;
+    background-color: transparent;
+}
+
+.next_steps_text {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.next_steps_text h2 {
+    font-size: 20px;
+    color: #3789C2;
+    margin: 0;
+    text-align: left; /* Ensure left alignment */
+}
+
+.next_steps_text p {
+    font-size: 14px;
+    font-style: italic;
+    color: #575656;
+    margin-top: 10px;
+    cursor: pointer;
+    text-align: right; /* Ensure right alignment */
+}
+
+
+.click_here {
+    font-size: 16px;
+    font-style: italic;
+    color: #000000;
+    text-align: right;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.vessel_details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dimensions_sec, .engine_sec {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.25);
+    width: 48%;
+    padding: 20px;
+}
+
+.dimensions_sec h2, .engine_sec h2 {
+    font-size: 16px;
+    color: #151C64;
+    margin-bottom: 20px;
+}
+
+.details_box p {
+    font-size: 16px;
+    line-height: 45px;
+    color: #000000;
+}
+
+/* Footer Section */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #B9DDF6;
+}
+
+footer p {
+    font-size: 14px;
+}
+
+/* Suggestions Dropdown */
+.suggestions {
+    position: absolute;
+    top: 100%;
+    left: 420px;
+    right: 370px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+    z-index: 1000;
+    max-height: 168px;
+    display: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.suggestions li {
+    padding: 8px 12px;
+    cursor: pointer;
+    font-family: 'Arimo', sans-serif;
+    font-size: 14px;
+    color: #5D5A5A;
+}
+
+.suggestions li:hover {
+    background-color: #f0f0f0;
+}
+
+/* Vessel Title Section */
+.vessel-title-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px auto 0px auto;
+    width: 75%;
+}
+
+.vessel-title-section h2 {
+    font-size: 16px;
+    color: #151C64;
+    font-weight: 700;
+}
+
+
+.back_link {
+    background-color: #B9DDF6;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #000000;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.14);
+    text-align: center;
+    margin-bottom: 20px;
+    text-decoration: none; /* Remove the underline */
+}
+
+.back_link:hover {
+    background-color: #A0C4E6; /* Lighter shade on hover */
+    text-decoration: none; /* Ensure it stays removed on hover */
+}
+
+/* Vessel Name Box */
+.vessel_name_box {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.11);
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vessel_name_content h3 {
+    font-family: 'Arimo', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #000000;
+}
+
+.line {
+    width: 75%;
+    margin: 0 auto 30px auto;
+    border-top: 1px solid #939191; /* Consistent 1px border */
+}
+
+/* Status Section Styling */
+.status_section {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.11);
+    padding: 20px;
+}

@@ -1,0 +1,326 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arimo', sans-serif;
+}
+
+body {
+    background-color: #F5F5F7;
+    color: #000;
+}
+
+header {
+    width: 100%;
+    height: 226px;
+    background-color: #B9DDF6;
+    position: relative;
+    text-align: center;
+}
+
+.logo img {
+    position: absolute;
+    top: 10px;
+}
+
+.ntu_logo {
+    width: 370px;
+    height: 68px;
+    left: 13px;
+}
+
+.mesd_logo {
+    width: 48px;
+    height: 49px;
+    right: 20px;
+}
+
+h1 {
+    position: absolute;
+    width: 100%;
+    top: 83px;
+    font-family: 'Arimo', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #151C64;
+    text-align: center;
+}
+
+.main_search {
+    position: absolute;
+    top: 120px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search_container {
+    display: flex;
+    align-items: center;
+    width: 700px;
+    height: 60px;
+    background-color: white;
+    border-radius: 30px;
+    padding: 0 20px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.search_container select {
+    width: 150px;
+    border: none;
+    padding: 10px;
+    border-radius: 30px;
+    outline: none;
+    background: transparent;
+}
+
+.search_container input {
+    width: 400px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.separator {
+    width: 1px;
+    height: 40px;
+    background-color: #ccc;
+    margin: 0 10px;
+}
+
+.search_btn {
+    background-color: #B9DDF6;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 4px 1px 5px rgba(0, 0, 0, 0.25);
+}
+
+.question_tip {
+    position: relative;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.circle {
+    width: 30px;
+    height: 30px;
+    background-color: #3789C2;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+}
+
+.tooltip {
+    visibility: hidden;
+    width: 200px;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+    color: #3789C2;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%; /* Position the tooltip above the button */
+    left: 50%;
+    margin-left: -100px; /* Center the tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 12px; /* Smaller font size */
+}
+
+.tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%; /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.9) transparent transparent transparent; /* Adjusted for semi-transparent background */
+}
+
+.question_tip.clicked .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Prefix Section */
+.prefix_section {
+    width: 90%;
+    margin: 40px auto;
+}
+
+.prefix_section h2 {
+    color: #181C62;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.prefix_group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.prefix_box {
+    background-color: #FFFFFF;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.03);
+    border-radius: 20px;
+    width: 244px;
+    height: 85px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for scaling */
+    cursor: pointer; /* Change cursor to pointer (hand) */
+    user-select: none; /* Prevent text selection */
+}
+
+/* Add subtle zoom and shadow effect on hover */
+.prefix_box:hover {
+    transform: scale(1.05); /* Scale up by 5% on hover */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15); /* Slightly enhanced shadow */
+}
+
+.prefix_box .prefix {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 5px;
+    user-select: none;
+}
+
+.prefix_box .description {
+    font-size: 12px;
+    color: #666D73;
+    user-select: none;
+}
+
+/* Owner Section */
+.owner_section {
+    width: 90%;
+    margin: 40px auto;
+}
+
+.owner_section h2 {
+    color: #181C62;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.owner_group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.owner_box {
+    background-color: #FFFFFF;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.03);
+    border-radius: 20px;
+    width: 244px;
+    height: 85px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.owner_box p {
+    font-size: 10px;
+    font-weight: 400;
+    color: #000;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.owner_btn {
+    background-color: #B9DDF6;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-size: 8px;
+    font-weight: 400;
+    color: #000;
+    cursor: pointer;
+    text-align: left;
+    width: 63px;
+}
+
+/* Browse All Owners Button */
+.browse_btn {
+    box-sizing: border-box;
+    width: 162px;
+    height: 36px;
+    margin: 40px auto;
+    border: 1px solid #3789C2;
+    border-radius: 20px;
+    background-color: transparent; /* Make background color transparent */
+    font-size: 14px;
+    color: #3789C2;
+    text-align: center;
+    cursor: pointer;
+    display: block;
+    line-height: 36px; /* Vertically centers the text */
+}
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #B9DDF6;
+}
+
+footer p {
+    font-size: 14px;
+}
+
+/* 定义推荐框的样式 */
+.suggestions {
+    position: absolute;
+    top: 100%; /* 将推荐框紧贴搜索栏的下方 */
+    left: 420px; /* 根据搜索栏内选择框和竖线的位置调整左侧对齐 */
+    right: 370px; /* 确保右侧对齐搜索按钮左侧 */
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px; /* 推荐框紧贴搜索栏 */
+    z-index: 1000;
+    max-height: 168px; /* 调整高度，容纳6条推荐 */
+    display: none; /* 默认隐藏 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影，使其浮在页面上方 */
+    overflow: hidden; /* 移除滚动条 */
+}
+
+.suggestions li {
+    padding: 8px 12px;
+    cursor: pointer;
+    font-family: 'Arimo', sans-serif;
+    font-size: 14px;
+    color: #5D5A5A;
+}
+
+.suggestions li:hover {
+    background-color: #f0f0f0;
+}
+
+
+

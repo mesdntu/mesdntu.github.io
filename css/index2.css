@@ -1,0 +1,168 @@
+/* General layout */
+body {
+    font-family: 'Arimo', sans-serif;
+    background-color: #F5F5F7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Main container */
+.main-container {
+    position: relative;
+    width: 1220px;
+    height: 641px;
+    background: #F5F5F7;
+}
+
+/* Header */
+.header {
+    position: absolute;
+    width: 1220px;
+    height: 79px;
+    top: 0;
+    background: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    padding-left: 22px;
+}
+
+.ntu-logo {
+    width: 439px;
+    height: 58px;
+}
+
+/* Main content */
+.main-part {
+    position: absolute;
+    width: 1220px;
+    height: 562px;
+    top: 79px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Background box with content */
+.main_words {
+    width: 1014.75px;
+    height: 456px;
+    background: #FFFFFF;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+}
+
+/* Illustration */
+.illustration {
+    width: 381px;
+    height: 411px;
+}
+
+.illustration-img {
+    width: 100%;
+    height: auto;
+}
+
+/* Login Section */
+.login-section {
+    width: 370px;
+    height: 277px;
+    background: #F5F5F7;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+/* Tool Title and Description (Inside Main Words) */
+.tool-container {
+    width: 370px;
+    margin-top: 30px;
+}
+
+.tool-name {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.tool-description {
+    font-size: 13px;
+    line-height: 15px;
+    color: #605E5E;
+    margin-bottom: 20px;
+}
+
+/* Login Box */
+.login-box {
+    margin-top: 20px;
+}
+
+.login-header {
+    font-weight: 700;
+    font-size: 16px;
+    color: #181C62;
+    margin-bottom: 20px;
+}
+
+.input-bar {
+    margin-bottom: 20px;
+}
+
+input {
+    width: 230px;
+    height: 33px;
+    border-radius: 20px;
+    border: none;
+    padding: 0 10px;
+    box-shadow: inset -2px 4px 4px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+}
+
+/* Buttons */
+.login-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.login-btn, .contact-btn {
+    width: 100px;
+    height: 35px;
+    border-radius: 10px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 35px;
+    cursor: pointer;
+}
+
+.login-btn {
+    background-color: #403B84;
+    color: white;
+    border: none;
+}
+
+.contact-btn {
+    background-color: #F5F5F7;
+    border: 1px solid black;
+    color: black;
+}
+
+/* Footer */
+.footer {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    color: black;
+}
