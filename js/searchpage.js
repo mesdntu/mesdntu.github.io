@@ -72,92 +72,23 @@ function fillOwnerBoxes() {
         // Fill owner_btn button with vessel count
         const ownerBtnElement = ownerBox.querySelector('.owner_btn');
         ownerBtnElement.textContent = `${vesselCount} ${vesselCount > 1 ? 'Vessels' : 'Vessel'}`;
+
+        // Add click event listener to redirect to owner_vessel.html with the owner name
+        ownerBtnElement.addEventListener('click', function() {
+            window.location.href = `/pages/owner_vessel.html?owner=${encodeURIComponent(owner)}`;
+        });
     });
 }
 
-// Listen for input events to implement autocomplete functionality
-document.getElementById('search_input').addEventListener('input', function() {
-    const query = this.value.toLowerCase();
-    const vesselSelect = document.getElementById('vessel_select').value;  // Check user selection
-    const suggestionsList = document.getElementById('suggestions_list');
+// Load CSV data when the page loads
+window.onload = loadData;
 
-    // If input is empty, hide suggestion box
-    if (query === '') {
-        suggestionsList.style.display = 'none';
-        return;
-    }
-
-    let filteredData = [];
-
-    // Filter data based on user selection
-    if (vesselSelect === 'vessel_name') {
-        // Recommend based on Vessel Name column
-        filteredData = data.filter(item => item.vesselName.toLowerCase().startsWith(query));
-    } else if (vesselSelect === 'owner_name' && ownerNameIndex !== -1) {
-        // Recommend based on Owner Name column and remove duplicates
-        const seenOwners = new Set();
-        filteredData = data.filter(item => {
-            const ownerNameLower = item.ownerName.toLowerCase();
-            if (!seenOwners.has(ownerNameLower) && ownerNameLower.startsWith(query)) {
-                seenOwners.add(ownerNameLower); // Track seen Owner Names
-                return true;
-            }
-            return false;
-        });
-    }
-
-    // Sort recommendations alphabetically
-    filteredData.sort((a, b) => {
-        const nameA = vesselSelect === 'vessel_name' ? a.vesselName : a.ownerName;
-        const nameB = vesselSelect === 'vessel_name' ? b.vesselName : b.ownerName;
-        return nameA.localeCompare(nameB);
-    });
-
-    // Show up to 6 suggestions
-    const suggestions = filteredData.slice(0, 6);
-
-    // Clear and re-render suggestions list
-    suggestionsList.innerHTML = ''; // Clear previous suggestions
-    suggestions.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = vesselSelect === 'vessel_name' ? item.vesselName : item.ownerName;
-        li.addEventListener('click', function() {
-            document.getElementById('search_input').value = li.textContent;
-            suggestionsList.innerHTML = ''; // Clear suggestions
-            suggestionsList.style.display = 'none'; // Hide suggestions box
-        });
-        suggestionsList.appendChild(li);
-    });
-
-    // Show suggestion box
-    suggestionsList.style.display = 'block';
-});
-
-// Click event listener to close suggestion box
-document.addEventListener('click', function(event) {
-    const suggestionsList = document.getElementById('suggestions_list');
-    const searchInput = document.getElementById('search_input');
-
-    // If the suggestion box is visible and the click is outside the input or suggestion box, hide the suggestion box
-    if (suggestionsList.style.display === 'block' && !searchInput.contains(event.target) && !suggestionsList.contains(event.target)) {
-        suggestionsList.style.display = 'none';
-    }
-});
-
-// Stop click event propagation when clicking inside the search input or suggestion list
-document.getElementById('search_input').addEventListener('click', function(event) {
-    event.stopPropagation();
-});
-
-document.getElementById('suggestions_list').addEventListener('click', function(event) {
-    event.stopPropagation();
-});
 
 // Add event listeners to prefix boxes for redirection
 document.querySelectorAll('.prefix_box').forEach(box => {
     box.addEventListener('click', function() {
         // Get the prefix text from the clicked box
-        const prefix = this.querySelector('.prefix').textContent;
+        const prefix = this.querySelector('.prefix').textContent.trim();
 
         // Redirect to prefix.html with the selected prefix as a URL parameter
         window.location.href = `/pages/prefix.html?prefix=${encodeURIComponent(prefix)}`;
@@ -165,22 +96,17 @@ document.querySelectorAll('.prefix_box').forEach(box => {
 });
 
 // Load CSV data when the page loads
+window.onload = function() {
+    loadData();
+    
+    // Ensure the prefix boxes have click listeners
+    document.querySelectorAll('.prefix_box').forEach(box => {
+        box.addEventListener('click', function() {
+            const prefix = this.querySelector('.prefix').textContent.trim();
+            window.location.href = `/pages/prefix.html?prefix=${encodeURIComponent(prefix)}`;
+        });
+    });
+};
+
+// Load CSV data when the page loads
 window.onload = loadData;
-
-function searchVessel() {
-    const searchInput = document.getElementById('search_input').value.trim();
-    const vesselSelect = document.getElementById('vessel_select').value;
-
-    // Ensure there is a value in the input field
-    if (searchInput) {
-        // Redirect to vessel.html when vessel_name is selected
-        if (vesselSelect === 'vessel_name') {
-            window.location.href = `/pages/vessel.html?vessel=${encodeURIComponent(searchInput)}`;
-        } else if (vesselSelect === 'owner_name') {
-            // Redirect to a different URL if Owner Name is selected
-            window.location.href = `/pages/vessel.html?owner=${encodeURIComponent(searchInput)}`;
-        }
-    } else {
-        alert('Please input a valid vessel or owner name.');
-    }
-}

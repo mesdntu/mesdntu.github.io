@@ -82,7 +82,7 @@ function renderPage(page) {
         ownerItem.className = 'owner_item';
         ownerItem.innerHTML = `
             <div class="owner_name">${owner.ownerName}</div>
-            <button class="vessel_btn">${owner.vesselCount} ${owner.vesselCount === 1 ? 'Vessel' : 'Vessels'}</button>
+            <button class="vessel_btn" onclick="redirectToOwnerVessel('${owner.ownerName}')">${owner.vesselCount} ${owner.vesselCount === 1 ? 'Vessel' : 'Vessels'}</button>
         `;
         ownersList.appendChild(ownerItem);
 
@@ -95,25 +95,10 @@ function renderPage(page) {
     renderPagination();
 }
 
-function searchVessel() {
-    const searchInput = document.getElementById('search_input').value.trim();
-    const vesselSelect = document.getElementById('vessel_select').value;
-
-    // 确保输入框中有内容
-    if (searchInput) {
-        // 如果用户选择了船只名称
-        if (vesselSelect === 'vessel_name') {
-            window.location.href = `/pages/vessel.html?vessel=${encodeURIComponent(searchInput)}`;
-        } 
-        // 如果用户选择了船主名称
-        else if (vesselSelect === 'owner_name') {
-            window.location.href = `/pages/vessel.html?owner=${encodeURIComponent(searchInput)}`;
-        }
-    } else {
-        alert('Please input a valid vessel or owner name.');
-    }
+// Function to redirect to owner_vessel.html with owner name as a URL parameter
+function redirectToOwnerVessel(ownerName) {
+    window.location.href = `/pages/owner_vessel.html?owner=${encodeURIComponent(ownerName)}`;
 }
-
 
 // Render pagination buttons with ellipses for skipped pages
 function renderPagination() {

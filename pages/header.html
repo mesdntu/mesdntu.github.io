@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header</title>
+    <link rel="stylesheet" href="/css/header.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <a href="../index2.html">
+                    <img src="/images/ntu_logo.png" alt="NTU Logo" class="ntu_logo">
+                </a>                
+                <img src="/images/mesd_logo.png" alt="MESD Logo" class="mesd_logo">
+            </div>
+            <h1>Check the Biofuel Compatibility for Your Vessel</h1>
+            
+            <!-- Search Bar Section -->
+            <section class="main_search" style="position: relative;">
+                <div class="search_container">
+                    <select name="vessel" id="vessel_select">
+                        <option value="vessel_name">Vessel Name</option>
+                        <option value="owner_name">Owner Name</option>
+                    </select>
+                    <div class="separator"></div>
+                    <input type="text" id="search_input" placeholder="Input Vessel Name / Owner Name">
+                    <ul id="suggestions_list" class="suggestions"></ul>
+                    <button class="search_btn" onclick="searchVessel()">Search</button>
+                </div>
+                <div class="question_tip">
+                    <div class="circle">?</div>
+                    <div class="tooltip">Please input the Vessel Name or Owner Name in the format "VesselName123" or "OwnerName456".</div>
+                </div>
+            </section>
+        </div>
+    </header>
+
+    <script src="/js/header.js"></script>
+</body>
+
+</html>

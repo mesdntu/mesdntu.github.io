@@ -1,72 +1,46 @@
-let data = []; // 存储CSV数据的数组
-let ownerNameIndex = -1; // 存储"Owner Name"列的索引
+document.addEventListener('DOMContentLoaded', function() {
+    let headerData = []; // Store CSV data for header only
 
-// 加载header.html和header.css函数
-function loadHeader() {
-    fetch('header.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('header-placeholder').innerHTML = data;
-            loadHeaderCSS(); // 加载header样式
-            loadData(); // 加载CSV数据
-            initializeSearch(); // 初始化搜索相关事件监听器
-        })
-        .catch(error => console.error('Error loading the header:', error));
-}
-
-function loadHeaderCSS() {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'header.css';
-    document.head.appendChild(link);
-}
-
-// 加载CSV数据函数
-async function loadData() {
-    try {
-        const response = await fetch('/data/B100 data.csv'); // 根据需要调整路径
-        const text = await response.text();
-        data = parseCSV(text);
-    } catch (error) {
-        console.error('Error loading CSV data:', error);
-    }
-}
-
-// 解析CSV的函数，并找到"Owner Name"列的索引
-function parseCSV(text) {
-    const rows = text.split('\n');
-    const headers = rows[0].split(',').map(header => header.trim().toLowerCase());
-
-    // 找到"Owner Name"列的索引（忽略大小写和前后空格）
-    ownerNameIndex = headers.indexOf('owner name');
-
-    if (ownerNameIndex === -1) {
-        console.error('Owner Name列未找到');
-        return [];
+    // Load CSV data function
+    async function loadData() {
+        try {
+            const response = await fetch('/data/B100 data.csv'); // Adjust path as needed
+            const text = await response.text();
+            headerData = parseCSV(text);
+        } catch (error) {
+            console.error('Error loading CSV data:', error);
+        }
     }
 
-    // 跳过标题行，并解析数据
-    return rows.slice(1).map(row => {
-        const cols = row.split(',');
-        return {
-            vesselName: (cols[1] || '').trim(),  // 你可以根据需要调整Vessel Name列的索引
-            ownerName: (cols[ownerNameIndex] || '').trim()  // 根据Owner Name列的索引来取值
-        };
-    });
-}
+    // Parse CSV function
+    function parseCSV(text) {
+        const rows = text.split('\n');
+        const headers = rows[0].split(',').map(header => header.trim().toLowerCase());
 
-// 初始化搜索框事件监听器
-function initializeSearch() {
-    const searchInput = document.getElementById('search_input');
-    const vesselSelect = document.getElementById('vessel_select');
-    const suggestionsList = document.getElementById('suggestions_list');
+        // Find index for Vessel Name and Owner Name
+        const vesselNameIndex = headers.indexOf('vessel name');
+        const ownerNameIndex = headers.indexOf('owner name');
 
-    // 监听输入事件以实现自动补全功能
-    searchInput.addEventListener('input', function () {
+        if (vesselNameIndex === -1 || ownerNameIndex === -1) {
+            console.error('Required columns not found');
+            return [];
+        }
+
+        return rows.slice(1).map(row => {
+            const cols = row.split(',');
+            return {
+                vesselName: (cols[vesselNameIndex] || '').trim(),
+                ownerName: (cols[ownerNameIndex] || '').trim()
+            };
+        });
+    }
+
+    // Listen for input events to implement keyword-based autocomplete functionality
+    document.getElementById('search_input').addEventListener('input', function() {
         const query = this.value.toLowerCase();
-        const selection = vesselSelect.value;  // 检查用户选择
+        const vesselSelect = document.getElementById('vessel_select').value;
+        const suggestionsList = document.getElementById('suggestions_list');
 
-        // 如果输入为空，隐藏推荐框
         if (query === '') {
             suggestionsList.style.display = 'none';
             return;
@@ -74,56 +48,92 @@ function initializeSearch() {
 
         let filteredData = [];
 
-        // 根据用户选择决定推荐数据源
-        if (selection === 'vessel_name') {
-            filteredData = data.filter(item => item.vesselName.toLowerCase().startsWith(query));
-        } else if (selection === 'owner_name' && ownerNameIndex !== -1) {
-            filteredData = data.filter(item => item.ownerName.toLowerCase().startsWith(query));
+        // Keyword-based filtering
+        if (vesselSelect === 'vessel_name') {
+            filteredData = headerData.filter(item => item.vesselName.toLowerCase().includes(query));
+        } else if (vesselSelect === 'owner_name') {
+            const seenOwners = new Set();
+            filteredData = headerData.filter(item => {
+                const ownerNameLower = item.ownerName.toLowerCase();
+                if (!seenOwners.has(ownerNameLower) && ownerNameLower.includes(query)) {
+                    seenOwners.add(ownerNameLower);
+                    return true;
+                }
+                return false;
+            });
         }
 
-        // 按字母排序推荐
         filteredData.sort((a, b) => {
-            const nameA = selection === 'vessel_name' ? a.vesselName : a.ownerName;
-            const nameB = selection === 'vessel_name' ? b.vesselName : b.ownerName;
+            const nameA = vesselSelect === 'vessel_name' ? a.vesselName : a.ownerName;
+            const nameB = vesselSelect === 'vessel_name' ? b.vesselName : b.ownerName;
             return nameA.localeCompare(nameB);
         });
 
-        // 显示最多6个建议
         const suggestions = filteredData.slice(0, 6);
 
-        // 清空并重新渲染建议列表
-        suggestionsList.innerHTML = ''; // 清空之前的建议
+        suggestionsList.innerHTML = '';
         suggestions.forEach(item => {
             const li = document.createElement('li');
-            li.textContent = selection === 'vessel_name' ? item.vesselName : item.ownerName;
-            li.addEventListener('click', function () {
-                searchInput.value = li.textContent;
-                suggestionsList.innerHTML = ''; // 清空建议
-                suggestionsList.style.display = 'none'; // 隐藏建议框
+            li.textContent = vesselSelect === 'vessel_name' ? item.vesselName : item.ownerName;
+            li.addEventListener('click', function() {
+                document.getElementById('search_input').value = li.textContent;
+                suggestionsList.innerHTML = '';
+                suggestionsList.style.display = 'none';
             });
             suggestionsList.appendChild(li);
         });
 
-        // 显示推荐框
         suggestionsList.style.display = 'block';
     });
 
-    // 添加点击事件以关闭推荐框
-    document.addEventListener('click', function (event) {
+    // Click event listener to close suggestion box
+    document.addEventListener('click', function(event) {
+        const suggestionsList = document.getElementById('suggestions_list');
+        const searchInput = document.getElementById('search_input');
+
         if (suggestionsList.style.display === 'block' && !searchInput.contains(event.target) && !suggestionsList.contains(event.target)) {
             suggestionsList.style.display = 'none';
         }
     });
 
-    // 阻止点击推荐框或搜索框时触发页面的点击事件
-    searchInput.addEventListener('click', function (event) {
+    document.getElementById('search_input').addEventListener('click', function(event) {
         event.stopPropagation();
     });
 
-    suggestionsList.addEventListener('click', function (event) {
+    document.getElementById('suggestions_list').addEventListener('click', function(event) {
         event.stopPropagation();
     });
-}
 
-// 页面加载时调用 loadHeader
-window.onload = loadHeader;
+    window.searchVessel = function() {
+        const searchInput = document.getElementById('search_input').value.trim();
+        const vesselSelect = document.getElementById('vessel_select').value;
+    
+        if (searchInput) {
+            if (vesselSelect === 'vessel_name') {
+                window.location.href = `/pages/vessel.html?vessel=${encodeURIComponent(searchInput)}`;
+            } else if (vesselSelect === 'owner_name') {
+                window.location.href = `/pages/owner_vessel.html?owner=${encodeURIComponent(searchInput)}`;
+            }
+        } else {
+            alert('Please input a valid vessel or owner name.');
+        }
+    };
+    
+
+    // Toggle tooltip visibility on click
+    document.querySelector('.question_tip').addEventListener('click', function(event) {
+        this.classList.add('clicked');
+        event.stopPropagation(); // Prevent the event from bubbling up to the document
+    });
+
+    // Close the tooltip if clicking outside of it
+    document.addEventListener('click', function() {
+        const questionTip = document.querySelector('.question_tip');
+        questionTip.classList.remove('clicked');
+    });
+
+    // Load CSV data when the page loads
+    loadData();
+});
+
+console.log("header.js loaded and searchVessel function is defined.");

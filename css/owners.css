@@ -15,14 +15,13 @@ body {
 header {
     width: 100%;
     height: 226px;
-    background-image: url('/images/picture1.png'); /* Background image */
-    background-color: #E5F6FB; /* Background color */
-    background-size: cover; /* Make the image cover the entire header */
-    background-position: center; /* Center the image in the header */
+    background-image: url('/images/picture1.png'); 
+    background-color: #E5F6FB; 
+    background-size: cover; 
+    background-position: center; 
     position: relative;
     text-align: center;
 }
-
 
 .logo img {
     position: absolute;
@@ -72,7 +71,6 @@ h1 {
     padding: 0 20px;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
 }
-
 
 .search_container select {
     width: 150px;
@@ -131,30 +129,30 @@ h1 {
 .tooltip {
     visibility: hidden;
     width: 200px;
-    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+    background-color: rgba(255, 255, 255, 0.9); 
     color: #3789C2;
     text-align: center;
     border-radius: 5px;
     padding: 10px;
     position: absolute;
     z-index: 1;
-    bottom: 100%; /* Position the tooltip above the button */
+    bottom: 100%; 
     left: 50%;
-    margin-left: -100px; /* Center the tooltip */
+    margin-left: -100px; 
     opacity: 0;
     transition: opacity 0.3s;
-    font-size: 12px; /* Smaller font size */
+    font-size: 12px; 
 }
 
 .tooltip::after {
     content: "";
     position: absolute;
-    top: 100%; /* At the bottom of the tooltip */
+    top: 100%; 
     left: 50%;
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: rgba(255, 255, 255, 0.9) transparent transparent transparent; /* Adjusted for semi-transparent background */
+    border-color: rgba(255, 255, 255, 0.9) transparent transparent transparent; 
 }
 
 .question_tip.clicked .tooltip {
@@ -168,6 +166,7 @@ h1 {
     margin: 40px auto;
     position: relative;
     padding: 0 20px;
+    user-select: none;
 }
 
 .title_container {
@@ -185,12 +184,19 @@ h1 {
 }
 
 .back_btn {
-    background-color: transparent;
+    background-color: #B9DDF6;
     border: none;
-    font-size: 16px;
-    color: #3789C2;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #000000;
     cursor: pointer;
-    padding: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.14);
+    text-align: center;
+}
+
+.back_btn:hover {
+    background-color: #A0C4E6;
 }
 
 .column_name {
@@ -240,10 +246,15 @@ hr {
     color: #000000;
     cursor: pointer;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.14);
-    width: 130px; /* 设置最小宽度，确保按钮保持一致 */
+    width: 130px;
     text-align: center;
+    transition: all 0.4s ease-in-out; 
 }
 
+.vessel_btn:hover {
+    background-color: #A0C4E6; 
+    box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.2); 
+}
 
 .pagination {
     text-align: center;
@@ -265,6 +276,7 @@ hr {
     align-items: center;
     max-height: 500px;
     overflow-y: auto;
+    user-select: none;
 }
 
 .alphabet_sidebar div {
@@ -290,6 +302,7 @@ footer {
     text-align: center;
     padding: 20px;
     background-color: #F5F5F7;
+    user-select: none;
 }
 
 footer p {
@@ -297,18 +310,18 @@ footer p {
 }
 .suggestions {
     position: absolute;
-    top: 100%; /* 将推荐框紧贴搜索栏的下方 */
-    left: 420px; /* 根据搜索栏内选择框和竖线的位置调整左侧对齐 */
-    right: 370px; /* 确保右侧对齐搜索按钮左侧 */
+    top: 100%; 
+    left: 420px;
+    right: 370px; 
     background: rgba(255, 255, 255, 0.9);
     border: 1px solid #ccc;
     border-radius: 4px;
-    margin-top: 5px; /* 推荐框紧贴搜索栏 */
+    margin-top: 5px;
     z-index: 1000;
-    max-height: 168px; /* 调整高度，容纳6条推荐 */
-    display: none; /* 默认隐藏 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影，使其浮在页面上方 */
-    overflow: hidden; /* 移除滚动条 */
+    max-height: 168px; 
+    display: none; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    overflow: hidden; 
 }
 
 .suggestions li {
@@ -328,22 +341,6 @@ footer p {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-}
-
-.back_button {
-    background-color: #B9DDF6;
-    border: none;
-    border-radius: 20px;
-    padding: 10px 20px;
-    font-size: 14px;
-    color: #000000;
-    cursor: pointer;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.14);
-    text-align: center;
-}
-
-.back_button:hover {
-    background-color: #A0C4E6; /* Lighter shade on hover */
 }
 
 .pagination {

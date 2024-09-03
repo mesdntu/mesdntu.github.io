@@ -25,22 +25,26 @@ function parseCSV(text) {
     const rows = text.split('\n');
     const headers = rows[0].split(',').map(header => header.trim().toLowerCase());
 
-    ownerNameIndex = headers.indexOf('owner name');
-    
-    if (ownerNameIndex === -1) {
-        console.error('Owner Name column not found');
-        return [];
-    }
-
     return rows.slice(1).map(row => {
         const cols = row.split(',');
         return {
-            vesselName: (cols[1] || '').trim(),  // Adjust index for Vessel Name
-            ownerName: (cols[ownerNameIndex] || '').trim(),  // Get Owner Name
-            // Other necessary data columns (adjust as necessary)
+            vesselName: (cols[headers.indexOf('vessel name')] || '').trim(),
+            ownerName: (cols[headers.indexOf('owner name')] || '').trim(),
+            gt: (cols[headers.indexOf('gt')] || '').trim(),
+            length: (cols[headers.indexOf('length')] || '').trim(),
+            breadth: (cols[headers.indexOf('breadth')] || '').trim(),
+            depth: (cols[headers.indexOf('depth')] || '').trim(),
+            deadWeight: (cols[headers.indexOf('dead weight')] || '').trim(),
+            yearBuilt: (cols[headers.indexOf('year built')] || '').trim(),
+            engineBrand: (cols[headers.indexOf('engine brand')] || '').trim(),
+            engineSerialNo: (cols[headers.indexOf('engine serial no')] || '').trim(),
+            engineShaftPower: (cols[headers.indexOf('engine shaft power')] || '').trim(),
+            engineType: (cols[headers.indexOf('engine type')] || '').trim(),
+            engineMounting: (cols[headers.indexOf('engine mounting')] || '').trim(),
+            engineFuelUsed: (cols[headers.indexOf('engine fuel used')] || '').trim(),
+            engineModel: (cols[headers.indexOf('engine model')] || '').trim(),
             compatible: (cols[headers.indexOf('compatible')] || '').trim(),
             status: (cols[headers.indexOf('status')] || '').trim(),
-            // Add other columns here if needed
         };
     });
 }
@@ -93,9 +97,26 @@ function displayVesselInfo(vesselName) {
                 break;
         }
 
-        // Update vessel details (fill in relevant information)
-        // Example for updating details:
-        // document.querySelector('.dimensions_sec .details_box').innerHTML = `...`;
+        // Update vessel details dynamically
+        document.querySelector('.dimensions_sec .details_box').innerHTML = `
+            <p>Owner Name: ${vessel.ownerName || '---'}</p>
+            <p>GT: ${vessel.gt || '---'}</p>
+            <p>Length: ${vessel.length || '---'}</p>
+            <p>Breadth: ${vessel.breadth || '---'}</p>
+            <p>Depth: ${vessel.depth || '---'}</p>
+            <p>Dead Weight: ${vessel.deadWeight || '---'}</p>
+            <p>Year Built: ${vessel.yearBuilt || '---'}</p>
+        `;
+
+        document.querySelector('.engine_sec .details_box').innerHTML = `
+            <p>Engine Brand: ${vessel.engineBrand || '---'}</p>
+            <p>Engine Serial No: ${vessel.engineSerialNo || '---'}</p>
+            <p>Engine Shaft Power: ${vessel.engineShaftPower || '---'}</p>
+            <p>Engine Type: ${vessel.engineType || '---'}</p>
+            <p>Engine Mounting: ${vessel.engineMounting || '---'}</p>
+            <p>Engine Fuel Used: ${vessel.engineFuelUsed || '---'}</p>
+            <p>Engine Model: ${vessel.engineModel || '---'}</p>
+        `;
     } else {
         alert("Vessel information not found. Please check the vessel name.");
     }
@@ -157,7 +178,13 @@ document.querySelector('.search_btn').addEventListener('click', function() {
     const vesselSelect = document.getElementById('vessel_select').value;
 
     if (searchInput) {
-        displayVesselInfo(searchInput);
+        if (vesselSelect === 'vessel_name') {
+            // Navigate to vessel information page
+            window.location.href = `/pages/vessel.html?vessel=${encodeURIComponent(searchInput)}`;
+        } else if (vesselSelect === 'owner_name') {
+            // Navigate to owner vessels page
+            window.location.href = `/pages/owner_vessel.html?owner=${encodeURIComponent(searchInput)}`;
+        }
     } else {
         alert('Please enter a valid vessel or owner name.');
     }

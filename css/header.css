@@ -1,0 +1,201 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arimo', sans-serif;
+}
+
+body {
+    background-color: #F5F5F7;
+    color: #000;
+}
+
+header {
+    width: 100%;
+    height: 226px;
+    background-image: url('/images/picture1.png'); /* Background image */
+    background-color: #E5F6FB; /* Background color */
+    background-size: cover; /* Make the image cover the entire header */
+    background-position: center; /* Center the image in the header */
+    position: relative;
+    text-align: center;
+}
+
+.logo img {
+    position: absolute;
+    top: 10px;
+}
+
+.ntu_logo {
+    width: 370px;
+    height: 68px;
+    left: 13px;
+}
+
+.mesd_logo {
+    width: 48px;
+    height: 49px;
+    right: 20px;
+}
+
+h1 {
+    position: absolute;
+    width: 100%;
+    top: 83px;
+    font-family: 'Arimo', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #151C64;
+    text-align: center;
+    user-select: none;
+}
+
+.main_search {
+    position: absolute;
+    top: 120px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search_container {
+    display: flex;
+    align-items: center;
+    width: 700px;
+    height: 60px;
+    background-color: white;
+    border-radius: 30px;
+    padding: 0 20px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.search_container select {
+    width: 150px;
+    border: none;
+    padding: 10px;
+    border-radius: 30px;
+    outline: none;
+    background: transparent;
+}
+
+.search_container input {
+    width: 400px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.separator {
+    width: 1px;
+    height: 40px;
+    background-color: #ccc;
+    margin: 0 10px;
+}
+
+.search_btn {
+    background-color: #B9DDF6;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 3px 1px 2px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.search_btn:hover {
+    background-color: #A0C4E6;
+    box-shadow: 3px 1px 2px rgba(0, 0, 0, 0.25);
+    transform: scale(1.05);
+}
+
+/* Rest of the CSS remains the same */
+
+.question_tip {
+    position: relative;
+    display: inline-block;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.circle {
+    width: 30px;
+    height: 30px;
+    background-color: #3789C2;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.tooltip {
+    visibility: hidden;
+    width: 220px;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+    color: #3789C2;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    top: 40px; /* Adjusted to show tooltip below the question mark */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tooltip::after {
+    content: "";
+    position: absolute;
+    bottom: 100%; /* At the top of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent rgba(255, 255, 255, 0.9) transparent; /* Adjusted for semi-transparent background */
+}
+
+.question_tip.clicked .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Suggestions List */
+.suggestions {
+    position: absolute;
+    top: 100%; /* 将推荐框紧贴搜索栏的下方 */
+    left: 420px; /* 根据搜索栏内选择框和竖线的位置调整左侧对齐 */
+    right: 370px; /* 确保右侧对齐搜索按钮左侧 */
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px; /* 推荐框紧贴搜索栏 */
+    z-index: 1000; /* 调整此处为更高的值 */
+    max-height: 168px; /* 调整高度，容纳6条推荐 */
+    display: none; /* 默认隐藏 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影，使其浮在页面上方 */
+    overflow: hidden; /* 移除滚动条 */
+}
+
+
+.suggestions li {
+    padding: 8px 12px;
+    cursor: pointer;
+    font-family: 'Arimo', sans-serif;
+    font-size: 14px;
+    color: #5D5A5A;
+}
+
+.suggestions li:hover {
+    background-color: #f0f0f0;
+}
