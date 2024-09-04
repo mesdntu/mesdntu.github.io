@@ -416,11 +416,12 @@
     font-family: 'Arimo';
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 14px;
+    line-height: 22px;
     color: #605E5E;
     padding-left: 20px; /* 缩进答案部分 */
     margin-top: 10px;
+
 }
 
 .FAQ1.active .answer, .FAQ2.active .answer, .FAQ3.active .answer {
