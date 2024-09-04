@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     let headerData = []; // Store CSV data for header only
+    let tooltip; // Declare a global variable for the tooltip
 
     // Load CSV data function
     async function loadData() {
@@ -118,18 +119,17 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Please input a valid vessel or owner name.');
         }
     };
-    
 
     // Toggle tooltip visibility on click
-    document.querySelector('.question_tip').addEventListener('click', function(event) {
+    tooltip = document.querySelector('.question_tip'); // Assign the tooltip element to the global variable
+    tooltip.addEventListener('click', function(event) {
         this.classList.add('clicked');
         event.stopPropagation(); // Prevent the event from bubbling up to the document
     });
 
     // Close the tooltip if clicking outside of it
     document.addEventListener('click', function() {
-        const questionTip = document.querySelector('.question_tip');
-        questionTip.classList.remove('clicked');
+        tooltip.classList.remove('clicked');
     });
 
     // Load CSV data when the page loads
@@ -137,3 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 console.log("header.js loaded and searchVessel function is defined.");
+
+function goBack() {
+    window.history.back(); // Navigate to the previous page
+}

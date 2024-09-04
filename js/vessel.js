@@ -50,6 +50,7 @@ function parseCSV(text) {
 }
 
 // Display vessel info based on search
+// Display vessel info based on search
 function displayVesselInfo(vesselName) {
     const vessel = vesselData.find(item => item.vesselName.toLowerCase() === vesselName.toLowerCase());
 
@@ -64,28 +65,25 @@ function displayVesselInfo(vesselName) {
 
         // Display compatibility information
         switch (vessel.compatible.toLowerCase()) {
-            case "compatible":
-                compatibleText.textContent = "Compatible for B100";
+            case "compatible with b100":
+            case "compatible with b20":
+            case "compatible with b30":
+            case "conditionally compatible with b100":
+            case "conditionally compatible with bxx":
+                compatibleText.textContent = vessel.compatible;
                 compatibleText.style.color = "#35EA1E";
                 greenIcon.style.backgroundColor = "#35EA1E";
                 greenIcon.style.backgroundImage = "url('/images/check.png')";
-                statusText.textContent = vessel.status || "---";
+                statusText.textContent = `Status: ${vessel.status || '---'}`;
                 break;
 
-            case "incompatible":
-                compatibleText.textContent = "Incompatible for B100";
-                compatibleText.style.color = "#EA1E1E";
-                greenIcon.style.backgroundColor = "#EA1E1E";
-                greenIcon.style.backgroundImage = "url('/images/fault.png')";
-                statusText.textContent = vessel.status || "---";
-                break;
-
-            case "unknown":
-                compatibleText.textContent = "Compatibility Unknown";
-                compatibleText.style.color = "#A9A9A9";
-                greenIcon.style.backgroundColor = "#A9A9A9";
-                greenIcon.style.backgroundImage = "url('/images/unknown.png')";
-                statusText.textContent = "---";
+            case "no data available":
+                compatibleText.textContent = vessel.compatible;
+                compatibleText.style.color = "#FFB900";
+                greenIcon.style.backgroundColor = "#FFB900";
+                greenIcon.style.backgroundImage = "url('/images/line.png')";
+                greenIcon.style.backgroundSize = "50% 10%";
+                statusText.textContent = "Status: ---";
                 break;
 
             default:
@@ -96,6 +94,20 @@ function displayVesselInfo(vesselName) {
                 statusText.textContent = "---";
                 break;
         }
+
+        // Update next steps dynamically
+        const nextStepsText = document.querySelector('.next_steps_text h2');
+        const nextStepsLink = document.querySelector('.next_steps_text p');
+        
+        if (vessel.compatible.toLowerCase() === "compatible with b100" || vessel.compatible.toLowerCase() === "conditionally compatible with b100") {
+            nextStepsText.textContent = "Next Steps Before Sea Trials";
+        } else {
+            nextStepsText.textContent = "Next Steps for B100 Compatibility";
+        }
+
+        nextStepsLink.addEventListener('click', function() {
+            window.location.href = '/pages/development.html';
+        });
 
         // Update vessel details dynamically
         document.querySelector('.dimensions_sec .details_box').innerHTML = `
@@ -121,6 +133,11 @@ function displayVesselInfo(vesselName) {
         alert("Vessel information not found. Please check the vessel name.");
     }
 }
+
+function goBack() {
+    window.history.back(); // This navigates to the previous page in the browser's history
+}
+
 
 // Auto-suggestion feature for the search box
 document.getElementById('search_input').addEventListener('input', function() {

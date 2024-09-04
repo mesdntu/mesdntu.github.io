@@ -1,0 +1,70 @@
+body {
+    background-color: #F5F5F7;
+    color: #000;
+    font-family: 'Arimo', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 60vh; 
+    text-align: center;
+}
+
+/* Center the h2 and back button */
+.heading-container {
+    display: flex;
+    justify-content: space-between; /* Align h2 to the left, button to the right */
+    align-items: center;
+    width: 100%; /* Ensure it takes full width */
+    max-width: 800px; /* Optional: Limit the container width */
+    margin-bottom: 20px;
+}
+
+.development-message h2 {
+    font-size: 24px;
+    color: #151C64;
+    margin: 0;
+}
+
+.back_btn {
+    background-color: #B9DDF6;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 3px 1px 2px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+    user-select: none;
+    margin-left: 50px;
+}
+
+.back_btn:hover {
+    background-color: #A0C4E6;
+    box-shadow: 3px 1px 2px rgba(0, 0, 0, 0.25);
+    transform: scale(1.05);
+}
+
+/* Center image container */
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    width: 200px; /* Adjust size of the image */
+    margin-top: 20px;
+}
+
+/* Center footer and align */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #F5F5F7;
+    color: #151C64;
+    font-size: 14px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

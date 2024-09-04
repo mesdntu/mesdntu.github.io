@@ -4,6 +4,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Arimo', sans-serif;
+    user-select: none;
 }
 
 body {
@@ -213,28 +214,30 @@ h1 {
 .status_content {
     display: flex;
     align-items: center;
+    flex-grow: 1;
 }
 
-.green_icon {
+.status_section .green_icon {
+    flex-shrink: 0;
     width: 32px;
     height: 32px;
-    background-color: #35EA1E;
-    background-image: url('/images/check.png');
-    background-size: 16px 16px;
+    background-color: #35EA1E; /* Default color for Compatible status */
+    background-size: auto 50%; /* Image height is 50% of container, keeps width auto */
     background-position: center;
     background-repeat: no-repeat;
-    border-radius: 50%;
+    border-radius: 50%; /* Keep the icon circular */
     margin-right: 15px;
 }
 
+
 .compatible_text h2 {
-    font-size: 20px;
+    font-size: 16px;
     color: #35EA1E;
     margin: 0;
 }
 
 .compatible_text p {
-    font-size: 14px;
+    font-size: 12px;
     font-style: italic;
     color: #575656;
     margin: 5px 0 0;
@@ -247,7 +250,7 @@ h1 {
     background-color: #FFFFFF;
     border-radius: 20px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.11);
-    padding: 20px;
+    padding: 20px 20px 20px 20px;
 }
 
 .steps_content {
@@ -276,14 +279,14 @@ h1 {
 }
 
 .next_steps_text h2 {
-    font-size: 20px;
+    font-size: 16px;
     color: #3789C2;
     margin: 0;
     text-align: left; /* Ensure left alignment */
 }
 
 .next_steps_text p {
-    font-size: 14px;
+    font-size: 12px;
     font-style: italic;
     color: #575656;
     margin-top: 10px;
@@ -321,7 +324,7 @@ h1 {
 }
 
 .details_box p {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 45px;
     color: #000000;
 }

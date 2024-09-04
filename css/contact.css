@@ -1,0 +1,351 @@
+/* Global font styles */
+body {
+    font-family: 'Helvetica', sans-serif; 
+    font-size: 16px; 
+    color: #333; 
+    line-height: 1.6; 
+}
+
+/* Header section font styles */
+header a {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 14px;
+    color: #000;
+    font-weight: normal;
+}
+/* section1 */
+.section1 {
+    padding-top: 5px;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.ntu_logo {
+    width: 439px;
+    height: 80px;
+}
+
+/* Main content section font styles */
+.content-section h2 {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 24px;
+    color: #222;
+    font-weight: bold; 
+    margin-top: 15%;
+}
+
+.content-section p {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 16px;
+    color: #555;
+    font-weight: normal;
+}
+
+/* Contact info section font styles */
+.contact-info-section h2 {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 24px;
+    color: #000;
+    font-weight: bold;
+}
+
+.contact-info-section p {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 16px;
+    color: #444;
+}
+
+
+
+/* Monitoring locations section font styles */
+.monitoring-locations-section h2 {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+}
+
+.monitoring-locations-section p {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 16px;
+    color: #666;
+}
+
+.monitoring-locations-section a {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+/* Footer section font styles */
+footer p {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 12px;
+    color: #666;
+    font-weight: normal;
+}
+
+/* Header styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+    backdrop-filter: blur(10px);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-right: 20px;
+    position: relative;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+}
+
+.dropdown {
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #333; /* Dark gray text color */
+    padding: 10px 16px; /* Adjusted padding */
+    text-decoration: none;
+    display: block;
+    font-size: 12px; /* Smaller font size */
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.contact-button {
+    background-color: #B9DDF6;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 3px 1px 2px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+    user-select: none;
+    margin-left: 50px;
+}
+
+.contact-button:hover {
+    background-color: #A0C4E6;
+    box-shadow: 3px 1px 2px rgba(0, 0, 0, 0.25);
+    transform: scale(1.05);
+}
+/* Content section styles */
+.content-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 150px 40px 80px 40px;
+}
+
+.left-container {
+    flex: 1;
+}
+
+.right-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.right-container img {
+    width: 100%; 
+    max-width: 500px; 
+    height: auto; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+
+.statistic {
+    text-align: center;
+}
+
+.statistic h2 {
+    font-size: 10px;
+    margin: 0;
+}
+
+.statistic p {
+    font-size: 14px;
+    margin: 5px 0 0 0;
+}
+
+.separator {
+    width: 0.5px;
+    height: 100px;
+    background-color: #9b9696;
+}
+
+/* Contact info section styles */
+.contact-info-section {
+    padding: 40px;
+    text-align: center;
+}
+
+.contact-info-section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.contact-info-section p {
+    font-size: 16px;
+    margin-bottom: 40px;
+    color: #555;
+}
+
+.contact-info-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.contact-info {
+    flex: 1;
+    text-align: left;
+}
+
+.contact-info h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.contact-info p {
+    font-size: 14px;
+    margin: 0;
+    text-align: center;
+}
+
+/* Monitoring locations section styles */
+.monitoring-locations-section {
+    padding: 40px;
+    margin-left: 8%;
+    margin-right: 8%;
+}
+
+.monitoring-locations-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-container {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.text-container h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.text-container p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.text-container a {
+    display: inline-block;
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.map-container {
+    width: 450px;
+    height: 300px;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Footer styles */
+footer {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.footer-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-nav ul li {
+    margin: 0 15px;
+}
+
+.footer-nav ul li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+}
+
+.footer-social {
+    margin: 20px 0;
+}
+
+.footer-social a {
+    margin: 0 10px;
+}
+
+.footer-social img {
+    width: 24px;
+    height: 24px;
+}
+
+footer p {
+    font-size: 12px;
+    color: #666;
+}
