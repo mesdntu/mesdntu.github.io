@@ -1,14 +1,13 @@
-let vesselData = []; // Store parsed CSV data
-let ownerNameIndex = -1; // Index for "Owner Name"
+let vesselData = []; 
+let ownerNameIndex = -1; 
 
 // Load CSV data function
 async function loadVesselData() {
     try {
-        const response = await fetch('/data/B100 data.csv'); // Adjust path as needed
+        const response = await fetch('/data/B100 data.csv'); 
         const text = await response.text();
         vesselData = parseCSV(text);
 
-        // Get URL parameter vessel name and display info
         const urlParams = new URLSearchParams(window.location.search);
         const vesselName = urlParams.get('vessel');
 
@@ -50,7 +49,7 @@ function parseCSV(text) {
 }
 
 // Display vessel info based on search
-// Display vessel info based on search
+
 function displayVesselInfo(vesselName) {
     const vessel = vesselData.find(item => item.vesselName.toLowerCase() === vesselName.toLowerCase());
 
@@ -58,12 +57,12 @@ function displayVesselInfo(vesselName) {
     vesselDisplayNameElement.textContent = vesselName || "Unknown Vessel";
 
     if (vessel) {
-        // Update compatibility status and vessel info dynamically
+
         const compatibleText = document.querySelector('.compatible_text h2');
         const statusText = document.querySelector('.compatible_text p');
         const greenIcon = document.querySelector('.green_icon');
 
-        // Display compatibility information
+
         switch (vessel.compatible.toLowerCase()) {
             case "compatible with b100":
             case "compatible with b20":
@@ -95,7 +94,7 @@ function displayVesselInfo(vesselName) {
                 break;
         }
 
-        // Update next steps dynamically
+
         const nextStepsText = document.querySelector('.next_steps_text h2');
         const nextStepsLink = document.querySelector('.next_steps_text p');
         
@@ -106,10 +105,10 @@ function displayVesselInfo(vesselName) {
         }
 
         nextStepsLink.addEventListener('click', function() {
-            window.location.href = '/pages/development.html';
+            window.location.href = '/pages/guide.html';
         });
 
-        // Update vessel details dynamically
+
         document.querySelector('.dimensions_sec .details_box').innerHTML = `
             <p>Owner Name: ${vessel.ownerName || '---'}</p>
             <p>GT: ${vessel.gt || '---'}</p>
@@ -135,7 +134,7 @@ function displayVesselInfo(vesselName) {
 }
 
 function goBack() {
-    window.history.back(); // This navigates to the previous page in the browser's history
+    window.history.back(); 
 }
 
 
@@ -196,10 +195,10 @@ document.querySelector('.search_btn').addEventListener('click', function() {
 
     if (searchInput) {
         if (vesselSelect === 'vessel_name') {
-            // Navigate to vessel information page
+
             window.location.href = `/pages/vessel.html?vessel=${encodeURIComponent(searchInput)}`;
         } else if (vesselSelect === 'owner_name') {
-            // Navigate to owner vessels page
+
             window.location.href = `/pages/owner_vessel.html?owner=${encodeURIComponent(searchInput)}`;
         }
     } else {
@@ -207,7 +206,6 @@ document.querySelector('.search_btn').addEventListener('click', function() {
     }
 });
 
-// Close suggestions list when clicking outside
 document.addEventListener('click', function(event) {
     const suggestionsList = document.getElementById('suggestions_list');
     const searchInput = document.getElementById('search_input');
@@ -217,7 +215,6 @@ document.addEventListener('click', function(event) {
     }
 });
 
-// Stop event propagation on input or suggestion list click
 document.getElementById('search_input').addEventListener('click', function(event) {
     event.stopPropagation();
 });
@@ -225,5 +222,4 @@ document.getElementById('suggestions_list').addEventListener('click', function(e
     event.stopPropagation();
 });
 
-// Load data when the page loads
 window.onload = loadVesselData;

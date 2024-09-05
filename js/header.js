@@ -1,11 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
-    let headerData = []; // Store CSV data for header only
-    window.tooltip = null; // Assign tooltip to window object
+    let headerData = [];
+    window.tooltip = null;
 
-    // Load CSV data function
     async function loadData() {
         try {
-            const response = await fetch('/data/B100 data.csv'); // Adjust path as needed
+            const response = await fetch('/data/B100 data.csv');
             const text = await response.text();
             headerData = parseCSV(text);
         } catch (error) {
@@ -13,12 +12,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Parse CSV function
     function parseCSV(text) {
         const rows = text.split('\n');
         const headers = rows[0].split(',').map(header => header.trim().toLowerCase());
 
-        // Find index for Vessel Name and Owner Name
         const vesselNameIndex = headers.indexOf('vessel name');
         const ownerNameIndex = headers.indexOf('owner name');
 
@@ -36,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Listen for input events to implement keyword-based autocomplete functionality
     document.getElementById('search_input').addEventListener('input', function() {
         const query = this.value.toLowerCase();
         const vesselSelect = document.getElementById('vessel_select').value;
@@ -49,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         let filteredData = [];
 
-        // Keyword-based filtering
         if (vesselSelect === 'vessel_name') {
             filteredData = headerData.filter(item => item.vesselName.toLowerCase().includes(query));
         } else if (vesselSelect === 'owner_name') {
@@ -87,7 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
         suggestionsList.style.display = 'block';
     });
 
-    // Click event listener to close suggestion box
     document.addEventListener('click', function(event) {
         const suggestionsList = document.getElementById('suggestions_list');
         const searchInput = document.getElementById('search_input');
@@ -108,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.searchVessel = function() {
         const searchInput = document.getElementById('search_input').value.trim();
         const vesselSelect = document.getElementById('vessel_select').value;
-    
+
         if (searchInput) {
             if (vesselSelect === 'vessel_name') {
                 window.location.href = `/pages/vessel.html?vessel=${encodeURIComponent(searchInput)}`;
@@ -120,24 +114,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Initialize the global tooltip variable
-    window.tooltip = document.querySelector('.question_tip'); // Assign the tooltip element to the global window object
+    window.tooltip = document.querySelector('.question_tip');
     window.tooltip.addEventListener('click', function(event) {
         this.classList.add('clicked');
-        event.stopPropagation(); // Prevent the event from bubbling up to the document
+        event.stopPropagation();
     });
 
-    // Close the tooltip if clicking outside of it
     document.addEventListener('click', function() {
         window.tooltip.classList.remove('clicked');
     });
 
-    // Load CSV data when the page loads
     loadData();
 });
 
 console.log("header.js loaded and searchVessel function is defined.");
 
 function goBack() {
-    window.history.back(); // Navigate to the previous page
+    window.history.back();
 }

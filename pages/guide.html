@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B100 Guidance</title>
+    <link rel="stylesheet" href="/css/guide.css">
+    <link rel="stylesheet" href="/css/header.css"> 
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="/images/ntu_logo.png" alt="NTU Logo" class="ntu_logo">
+                </a>
+                <img src="/images/mesd_logo.png" alt="MESD Logo" class="mesd_logo">
+            </div>
+            <h1>Check the Biofuel Compatibility for Your Vessel</h1>
+
+            <!-- Search Bar Section -->
+            <section class="main_search" style="position: relative;">
+                <div class="search_container">
+                    <select name="vessel" id="vessel_select">
+                        <option value="vessel_name">Vessel Name</option>
+                        <option value="owner_name">Owner Name</option>
+                    </select>
+                    <div class="separator"></div>
+                    <input type="text" id="search_input" placeholder="Input Vessel Name / Owner Name">
+                    <ul id="suggestions_list" class="suggestions"></ul>
+                    <button class="search_btn" onclick="searchVessel()">Search</button>
+                </div>
+                <div class="question_tip">
+                    <div class="circle">?</div>
+                    <div class="tooltip">Please enter the keyword of Vessel Name or Owner Name to retrieve information.</div>
+                </div>
+            </section>
+        </div>
+    </header>
+
+    <!-- Title Section -->
+    <section class="title-section">
+        <h2>B100 Guidance</h2>
+        <a href="javascript:void(0);" class="back_link" onclick="goBack()">Back</a>
+    </section>
+    <div class="line"></div>
+
+    <!-- Main Section -->
+    <section class="main_section">
+        <div class="guide_section">
+            <h3>Authorization & Certification Requirements</h3>
+            <div class="box_container">
+                <div class="info_box" onclick="openModal('Authorization & Certification Requirements', 'Regulatory Approvals', '- Obtain MPA FSC approval (for Singapore-registered vessels) and OMS approval (for vessels operating in Singapore port waters). ', 'Classification Society')">
+                    <p>Regulatory Approvals</p>
+                    <p class="details">Details →</p>
+                </div>
+                <div class="info_box" onclick="openModal('Authorization & Certification Requirements', 'Engine & Equipment Attestation', '- Obtain certification from engine/equipment manufacturers confirming compatibility with B100 biofuel.', 'Classification Society')">
+                    <p>Engine & Equipment Attestation</p>
+                    <p class="details">Details →</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Biofuel Trials & Risk Management -->
+        <div class="guide_section">
+            <h3>Biofuel Trials & Risk Management</h3>
+            <div class="box_container">
+                <div class="info_box" onclick="openModal('Biofuel Trials & Risk Management', 'Biofuel Trial Documentation', '- Provide comprehensive documentation on engine(s)/equipment involved in the biofuel trial, including per-cylinder displacement data.', 'Classification Society')">
+                    <p>Biofuel Trial Documentation</p>
+                    <p class="details">Details →</p>
+                </div>
+                <div class="info_box" onclick="openModal('Biofuel Trials & Risk Management', 'Risk Management', '- Conduct a risk assessment for vessel operations during biofuel trials and implement corresponding risk control measures.', 'Classification Society')">
+                    <p>Risk Management</p>
+                    <p class="details">Details →</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Emissions & Operational Details -->
+        <div class="guide_section">
+            <h3>Emissions & Operational Details</h3>
+            <div class="box_container">
+                <div class="info_box" onclick="openModal('Emissions & Operational Details', 'NOx Emissions Compliance', '- Ensure NOx emissions comply with Regulation 13, Annex VI of the Convention, Prevention of Pollution of the Sea (Air) Regulations 2022.s', 'Classification Society')">
+                    <p>NOx Emissions Compliance</p>
+                    <p class="details">Details →</p>
+                </div>
+                <div class="info_box" onclick="openModal('Emissions & Operational Details', 'Operational Details', '- Include ship types (DWT/size) the tugboat assists in berthing/unberthing, routes (terminal/island-wide), contingency plans from Day 1 until trial ends, and biofuel loading/bunkering process.', 'MPA (Maritime Port Authority)')">
+                    <p>Operational Details</p>
+                    <p class="details">Details →</p>
+                </div>
+                <div class="info_box" onclick="openModal('Emissions & Operational Details', 'Tug & Trial Details', '- Include tug details and engine load during passage, changeover procedure/time for switching to diesel, confirm trial location is outside TSS, and outline daily plans for tug activities, including berthing/unberthing operations.', 'MPA (Maritime Port Authority)')">
+                    <p>Tug & Trial Details</p>
+                    <p class="details">Details →</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Certification & Documentation Compliance -->
+        <div class="guide_section">
+            <h3>Certification & Documentation Compliance</h3>
+            <div class="box_container">
+                <div class="info_box" onclick="openModal('Certification & Documentation Compliance', 'Communication & Contingency Plans', '- Establish communication protocols and contingency plans for tug operations, including contact details for key stakeholders (e.g., SCDF, PCG).', 'MPA (Maritime Port Authority)')">
+                    <p>Communication & Contingency Plans</p>
+                    <p class="details">Details →</p>
+                </div>
+                <div class="info_box" onclick="openModal('Certification & Documentation Compliance', 'Certificates', '- Obtain and present the Certificate of Registry, International Load Line Certificate, and Certificate of Insurance.', 'Terminal Operator')">
+                    <p>Certificates</p>
+                    <p class="details">Details →</p>
+                </div>
+                <div class="info_box" onclick="openModal('Certification & Documentation Compliance', 'General Rules & Regulations', '- Complete and submit the Terminal Operator’s General Rules and Regulations acknowledgment form and review the R&R details.', 'Terminal Operator')">
+                    <p>General Rules & Regulations</p>
+                    <p class="details">Details →</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Maintenance & Equipment Monitoring -->
+        <div class="guide_section">
+            <h3>Maintenance & Equipment Monitoring</h3>
+            <div class="box_container">
+                <div class="info_box" onclick="openModal('Maintenance & Equipment Monitoring', 'Scheduled Maintenance', '- List scheduled maintenance activities along with their objectives.', 'Engine Maker')">
+                    <p>Scheduled Maintenance</p>
+                    <p class="details">Details →</p>
+                </div>
+                <div class="info_box" onclick="openModal('Maintenance & Equipment Monitoring', 'Engine Component Monitoring', '- Document observations on the impact of biofuels on engine components, including injector performance and filter conditions.', 'Engine Maker')">
+                    <p>Engine Component Monitoring</p>
+                    <p class="details">Details →</p>
+                </div>
+                <div class="info_box" onclick="openModal('Maintenance & Equipment Monitoring', 'Engine Filters', '- Provide the maintenance schedule for engine filters and document any performance issues encountered.', 'Engine Maker')">
+                    <p>Engine Filters</p>
+                    <p class="details">Details →</p>
+                </div>
+                <div class="info_box" onclick="openModal('Maintenance & Equipment Monitoring', 'Filter Seals & Gaskets', '- Specify materials used for seals and gaskets and document their condition and performance with biofuels.', 'Engine Maker')">
+                    <p>Filter Seals & Gaskets</p>
+                    <p class="details">Details →</p>
+                </div>
+                <div class="info_box" onclick="openModal('Maintenance & Equipment Monitoring', 'Fuel Oil (FO) Pump Assembly', '- Conduct a detailed investigation of the fuel pump assembly and document any potential issues.', 'Engine Maker')">
+                    <p>Fuel Oil (FO) Pump Assembly</p>
+                    <p class="details">Details →</p>
+                </div>
+                <div class="info_box" onclick="openModal('Maintenance & Equipment Monitoring', 'Lube Oil (LO) Samples', '- Analyze lube oil (LO) samples and document the impact of biofuels on LO quality and engine performance.', 'Engine Maker')">
+                    <p>Lube Oil (LO) Samples</p>
+                    <p class="details">Details →</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Popup -->
+    <div id="modal" class="modal">
+        <div class="modal_content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3 id="modal_title"></h3>
+            <p><strong id="modal_category"></strong></p>
+            <p><strong>Consolidated Requirements</strong></p>
+            <p id="modal_requirements"></p>
+            <p><strong>Approval Coordinator</strong></p>
+            <p id="modal_approval"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 MESD. All Rights Reserved.</p>
+    </footer>
+
+    <script src="/js/header.js"></script> <!-- 引入 header.js -->
+    <script src="/js/guide.js"></script>
+</body>
+</html>
