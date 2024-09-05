@@ -297,6 +297,8 @@
 .image_3, .image_4, .image_5, .image_6 {
     width: 40px;
     height: 37px;
+    user-select: none;  /* Prevent text/image selection */
+    pointer-events: none;
 }
 
 .image_4 {
@@ -451,9 +453,6 @@
     transform: scale(1.05);
 }
 
-
-
-
 /* Discover More Section */
 .discover_more {
     position: relative;
@@ -493,6 +492,8 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    user-select: none;  /* Prevent text/image selection */
+    pointer-events: none;
 }
 
 .Frame_4:hover {

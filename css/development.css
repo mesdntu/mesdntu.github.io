@@ -55,6 +55,8 @@ main {
     height: auto;
     width: 200px; /* Adjust size of the image */
     margin-top: 20px;
+    user-select: none;  /* Prevent text/image selection */
+    pointer-events: none;  /* Optional: Disable pointer events */
 }
 
 /* Center footer and align */
