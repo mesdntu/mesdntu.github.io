@@ -1,55 +1,73 @@
-document.querySelectorAll('.FAQ1, .FAQ2, .FAQ3').forEach(item => {
-    item.addEventListener('click', function() {
-        this.classList.toggle('active');
-        
-        // Remove max-height after animation ends to allow for content resizing
-        const answer = this.querySelector('.answer');
-        if (this.classList.contains('active')) {
-            answer.style.maxHeight = answer.scrollHeight + 'px';
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle FAQ expand/collapse
+    const toggleFAQsBtn = document.querySelector('.see_more_btn');  // Select the button using class selector
+    const extraFAQs = document.querySelector('.extra_FAQs');
+    let isExpanded = false;
+
+    toggleFAQsBtn.addEventListener('click', function() {
+        if (isExpanded) {
+            extraFAQs.style.display = 'none';
+            toggleFAQsBtn.textContent = 'See More';
         } else {
-            answer.style.maxHeight = '0';
+            extraFAQs.style.display = 'block';
+            toggleFAQsBtn.textContent = 'See Less';
+        }
+        isExpanded = !isExpanded;
+    });
+
+    // Handle the FAQ item toggle for both the initial and extra FAQs
+    document.querySelectorAll('.FAQ1, .FAQ2, .FAQ3, .FAQ4, .FAQ5, .FAQ6, .FAQ7, .FAQ8, .FAQ9, .FAQ10').forEach(item => {
+        item.addEventListener('click', function() {
+            this.classList.toggle('active');
+            
+            const answer = this.querySelector('.answer');
+            if (this.classList.contains('active')) {
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            } else {
+                answer.style.maxHeight = '0';
+            }
+        });
+    });
+
+    // Observer to trigger section animations when they enter the viewport
+    const sections = document.querySelectorAll('.core_features, .FAQ, .discover_more');
+    const options = {
+        threshold: 0.1 // Trigger when 10% of the section is in view
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('section-visible');
+                observer.unobserve(entry.target); // Trigger only once
+            }
+        });
+    }, options);
+
+    // Observe each section for animations
+    sections.forEach(section => {
+        section.classList.add('section'); // Add initial hidden class
+        observer.observe(section);
+    });
+
+    // Login button logic
+    document.querySelector('.Rectangle_1').addEventListener('click', function() {
+        // Get user input
+        const account = document.getElementById('account').value;
+        const password = document.getElementById('password').value;
+
+        // Predefined correct credentials
+        const correctAccount = 'mesd-b100';
+        const correctPassword = '202412345678';
+
+        // Check if account and password are correct
+        if (account === correctAccount && password === correctPassword) {
+            // Redirect to search page if correct
+            window.location.href = '/pages/searchpage.html';
+        } else {
+            // Show error message if incorrect
+            const errorMessage = document.getElementById('error_message');
+            errorMessage.style.display = 'block';
         }
     });
-});
-// 定义要观察的目标元素
-const sections = document.querySelectorAll('.core_features, .FAQ, .discover_more');
-
-// 设置Intersection Observer的选项
-const options = {
-    threshold: 0.1 // 当section进入视口10%时触发
-};
-
-// 创建Intersection Observer实例
-const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('section-visible');
-            observer.unobserve(entry.target); // 只触发一次
-        }
-    });
-}, options);
-
-// 观察每个section
-sections.forEach(section => {
-    section.classList.add('section'); // 添加初始的隐藏类
-    observer.observe(section);
-});
-document.getElementById('loginBtn').addEventListener('click', function() {
-    // 获取用户输入的账号和密码
-    const account = document.getElementById('account').value;
-    const password = document.getElementById('password').value;
-
-    // 预定义的正确账号和密码
-    const correctAccount = 'mesd-b100';
-    const correctPassword = '202412345678';
-
-    // 检查账号和密码是否正确
-    if (account === correctAccount && password === correctPassword) {
-        // 如果正确，跳转到指定页面
-        window.location.href = '/pages/searchpage.html';
-    } else {
-        // 如果不正确，显示错误消息
-        const errorMessage = document.getElementById('error_message');
-        errorMessage.style.display = 'block';
-    }
 });
