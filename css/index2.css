@@ -117,15 +117,17 @@
     position: absolute;
     width: 396px;
     height: 298px;
-    left: 693px;
+    right: 0; /* 将元素右对齐 */
     top: 170px;
     display: flex;
     flex-direction: column;
-    align-items: left;
-    justify-content: left;
-    z-index: 2; /* Ensure .login_sec has a higher z-index */
+    align-items: flex-start; /* 保持内容的左对齐 */
+    justify-content: flex-start; /* 保持内容的左对齐 */
+    z-index: 2;
     user-select: none;
+    margin-right: 10%; /* 控制离右边的距离 */
 }
+
 .error_message {
     color: red;
     font-family: 'Arimo';
