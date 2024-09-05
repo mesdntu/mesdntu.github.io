@@ -98,7 +98,7 @@
 
 .learn_more {
     background: #149FD3;
-    opacity: 1 !important; /* 强制不透明 */
+    opacity: 1 !important; 
     border-radius: 10px;
     font-family: 'Arimo';
     font-style: normal;
@@ -117,15 +117,15 @@
     position: absolute;
     width: 396px;
     height: 298px;
-    right: 0; /* 将元素右对齐 */
+    right: 0; 
     top: 170px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* 保持内容的左对齐 */
-    justify-content: flex-start; /* 保持内容的左对齐 */
+    align-items: flex-start; 
+    justify-content: flex-start; 
     z-index: 2;
     user-select: none;
-    margin-right: 10%; /* 控制离右边的距离 */
+    margin-right: 10%;
 }
 
 .error_message {
@@ -134,9 +134,9 @@
     font-size: 14px;
     margin-top: 0px;
     margin-left: 10%;
-    z-index: 3; /* 确保它的层级高于背景等元素 */
-    position: relative; /* 保持相对定位，以正确显示在Login Here下方 */
-    display: none; /* 初始状态下隐藏 */
+    z-index: 3; 
+    position: relative; 
+    display: none; 
 }
 
 
@@ -149,11 +149,11 @@
     box-shadow: inset 0px 6px 4px 3px #FFFFFF;
     backdrop-filter: blur(10px);
     border-radius: 20px;
-    z-index: 1; /* Set lower z-index for the background */
+    z-index: 1; 
 }
 
 .Login_Here, .input_bar, .home_btn {
-    z-index: 3; /* Higher z-index for content */
+    z-index: 3;
 }
 
 .Login_Here {

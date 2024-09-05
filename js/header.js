@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     let headerData = []; // Store CSV data for header only
-    let tooltip; // Declare a global variable for the tooltip
+    window.tooltip = null; // Assign tooltip to window object
 
     // Load CSV data function
     async function loadData() {
@@ -120,16 +120,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Toggle tooltip visibility on click
-    tooltip = document.querySelector('.question_tip'); // Assign the tooltip element to the global variable
-    tooltip.addEventListener('click', function(event) {
+    // Initialize the global tooltip variable
+    window.tooltip = document.querySelector('.question_tip'); // Assign the tooltip element to the global window object
+    window.tooltip.addEventListener('click', function(event) {
         this.classList.add('clicked');
         event.stopPropagation(); // Prevent the event from bubbling up to the document
     });
 
     // Close the tooltip if clicking outside of it
     document.addEventListener('click', function() {
-        tooltip.classList.remove('clicked');
+        window.tooltip.classList.remove('clicked');
     });
 
     // Load CSV data when the page loads

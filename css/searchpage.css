@@ -240,12 +240,14 @@ h1 {
     margin-bottom: 20px;
 }
 
+
 .owner_group {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
+    justify-content: flex-start; /* 从左开始排列 */
+    gap: 30px;
 }
+
 
 .owner_box {
     background-color: #FFFFFF;
