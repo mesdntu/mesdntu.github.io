@@ -225,10 +225,20 @@ hr {
     border: none;
     border-radius: 20px;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 14px;
     color: #000000;
     cursor: pointer;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.14);
+    text-align: center;
+    text-decoration: none; 
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; 
+}
+
+.vessel_btn:hover {
+    background-color: #A0C4E6; 
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.25); 
+    transform: scale(1.05);
+    text-decoration: none; 
 }
 
 .pagination {
