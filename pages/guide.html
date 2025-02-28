@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B100 Guidance - Approval Coordinator</title>
+    <link rel="stylesheet" href="/css/guide.css">
+    <link rel="stylesheet" href="/css/header.css"> 
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="/images/ntu_logo.png" alt="NTU Logo" class="ntu_logo">
+                </a>
+                <img src="/images/mesd_logo.png" alt="MESD Logo" class="mesd_logo">
+            </div>
+            <h1>Biofuel Approval Coordinator</h1>
+
+            <!-- Search Bar Section -->
+            <section class="main_search">
+                <div class="search_container">
+                    <select name="vessel" id="vessel_select">
+                        <option value="vessel_name">Vessel Name</option>
+                        <option value="owner_name">Owner Name</option>
+                    </select>
+                    <input type="text" id="search_input" placeholder="Input Vessel Name / Owner Name">
+                    <button class="search_btn" onclick="searchVessel()">Search</button>
+                </div>
+            </section>
+        </div>
+    </header>
+
+    <!-- Title Section -->
+    <section class="title-section">
+        <h2>B100 Guidance</h2>
+        <a href="javascript:void(0);" class="back_link" onclick="goBack()">Back</a>
+    </section>
+    <div class="line"></div>
+
+    <!-- Main Section -->
+    <section class="main_section">
+
+        <!-- Classification Society Section -->
+        <div class="guide_section">
+            <h3>Classification Society</h3>
+            <div class="box_container">
+                <div class="collapsible_box">
+                    <button class="collapsible">Regulatory Approvals</button>
+                    <div class="content">
+                        <p><strong>Consolidated Requirements:</strong> Obtain MPA FSC approval (for Singapore-registered vessels) and OMS approval (for vessels operating in Singapore port waters).</p>
+                        <p><strong>Contact / Materials:</strong> ---</p>
+                    </div>
+                </div>
+
+                <div class="collapsible_box">
+                    <button class="collapsible">Engine & Equipment Attestation</button>
+                    <div class="content">
+                        <p><strong>Consolidated Requirements:</strong> Obtain certification from engine/equipment manufacturers confirming compatibility with B100 biofuel.</p>
+                        <p><strong>Contact / Materials:</strong> ---</p>
+                    </div>
+                </div>
+
+                <div class="collapsible_box">
+                    <button class="collapsible">Biofuel Trial Documentation</button>
+                    <div class="content">
+                        <p><strong>Consolidated Requirements:</strong> Provide comprehensive documentation on engine(s)/equipment involved in the biofuel trial, including per-cylinder displacement data.</p>
+                        <p><strong>Contact / Materials:</strong> ---</p>
+                    </div>
+                </div>
+
+                <div class="collapsible_box">
+                    <button class="collapsible">Risk Management</button>
+                    <div class="content">
+                        <p><strong>Consolidated Requirements:</strong> Conduct a risk assessment for vessel operations during biofuel trials and implement corresponding risk control measures.</p>
+                        <p><strong>Contact / Materials:</strong> ---</p>
+                    </div>
+                </div>
+
+                <div class="collapsible_box">
+                    <button class="collapsible">NOx Emissions Compliance</button>
+                    <div class="content">
+                        <p><strong>Consolidated Requirements:</strong> Ensure NOx emissions comply with Regulation 13, Annex VI of the Convention, Prevention of Pollution of the Sea (Air) Regulations 2022.</p>
+                        <p><strong>Contact / Materials:</strong> ---</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Maritime Port Authority Section -->
+        <div class="guide_section">
+            <h3>Maritime Port Authority</h3>
+            <div class="box_container">
+                <div class="collapsible_box">
+                    <button class="collapsible">Operational Details</button>
+                    <div class="content">
+                        <p><strong>Consolidated Requirements:</strong> Include ship types (DWT/size) the tugboat assists in berthing/unberthing, routes, contingency plans from Day 1 until trial ends, and biofuel loading/bunkering process.</p>
+                        <p><strong>Contact / Materials:</strong> ---</p>
+                    </div>
+                </div>
+
+                <div class="collapsible_box">
+                    <button class="collapsible">Tug & Trial Details</button>
+                    <div class="content">
+                        <p><strong>Consolidated Requirements:</strong> Include tug details and engine load during passage, changeover procedure/time for switching to diesel, confirm trial location is outside TSS, and outline daily plans for tug activities, including berthing/unberthing operations.</p>
+                        <p><strong>Contact / Materials:</strong> ---</p>
+                    </div>
+                </div>
+
+                <!-- Communication & Contingency Plans -->
+                <div class="collapsible_box">
+                    <button class="collapsible">Communication & Contingency Plans</button>
+                    <div class="content">
+                        <p><strong>Consolidated Requirements:</strong> Establish communication protocols and contingency plans for tug operations, including contact details for key stakeholders (e.g., SCDF, PCG).</p>
+                        <p><strong>Contact / Materials:</strong> ---</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Terminal Operator Section -->
+        <div class="guide_section">
+            <h3>Terminal Operator</h3>
+            <div class="box_container">
+                <div class="collapsible_box">
+                    <button class="collapsible">Certificates</button>
+                    <div class="content">
+                        <p><strong>Consolidated Requirements:</strong> Obtain and present the Certificate of Registry, International Load Line Certificate, and Certificate of Insurance.</p>
+                        <p><strong>Contact / Materials:</strong> ---</p>
+                    </div>
+                </div>
+
+                <div class="collapsible_box">
+                    <button class="collapsible">General Rules & Regulations</button>
+                    <div class="content">
+                        <p><strong>Consolidated Requirements:</strong> Complete and submit the Terminal Operator’s General Rules and Regulations acknowledgment form and review the R&R details.</p>
+                        <p><strong>Contact / Materials:</strong> ---</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Engine Maker Section -->
+        <div class="guide_section">
+            <h3>Engine Maker</h3>
+            <div class="box_container">
+                <div class="collapsible_box">
+                    <button class="collapsible">Scheduled Maintenance</button>
+                    <div class="content">
+                        <p><strong>Consolidated Requirements:</strong> List scheduled maintenance activities along with their objectives.</p>
+                        <p><strong>Contact / Materials:</strong> ---</p>
+                    </div>
+                </div>
+
+                <div class="collapsible_box">
+                    <button class="collapsible">Engine Component Monitoring</button>
+                    <div class="content">
+                        <p><strong>Consolidated Requirements:</strong> Document observations on the impact of biofuels on engine components, including injector performance and filter conditions.</p>
+                        <p><strong>Contact / Materials:</strong> ---</p>
+                    </div>
+                </div>
+
+                <div class="collapsible_box">
+                    <button class="collapsible">Engine Filters</button>
+                    <div class="content">
+                        <p><strong>Consolidated Requirements:</strong> Provide the maintenance schedule for engine filters and document any performance issues encountered.</p>
+                        <p><strong>Contact / Materials:</strong> ---</p>
+                    </div>
+                </div>
+
+                <div class="collapsible_box">
+                    <button class="collapsible">Filter Seals & Gaskets</button>
+                    <div class="content">
+                        <p><strong>Consolidated Requirements:</strong> Specify materials used for seals and gaskets and document their condition and performance with biofuels.</p>
+                        <p><strong>Contact / Materials:</strong> ---</p>
+                    </div>
+                </div>
+
+                <div class="collapsible_box">
+                    <button class="collapsible">Fuel Oil (FO) Pump Assembly</button>
+                    <div class="content">
+                        <p><strong>Consolidated Requirements:</strong> Conduct a detailed investigation of the fuel pump assembly and document any potential issues.</p>
+                        <p><strong>Contact / Materials:</strong> ---</p>
+                    </div>
+                </div>
+
+                <div class="collapsible_box">
+                    <button class="collapsible">Lube Oil (LO) Samples</button>
+                    <div class="content">
+                        <p><strong>Consolidated Requirements:</strong> Analyze lube oil (LO) samples and document the impact of biofuels on LO quality and engine performance.</p>
+                        <p><strong>Contact / Materials:</strong> ---</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2024 MESD. All Rights Reserved.</p>
+    </footer>
+
+    <script src="/js/guide.js"></script>
+</body>
+</html>

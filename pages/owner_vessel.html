@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner and Vessel Collection</title>
+    <link rel="stylesheet" href="/css/owner_vessel.css">
+    <link rel="stylesheet" href="/css/header.css"> 
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="/images/ntu_logo.png" alt="NTU Logo" class="ntu_logo">
+                </a>
+                <img src="/images/mesd_logo.png" alt="MESD Logo" class="mesd_logo">
+            </div>
+            <h1>Check the Biofuel Compatibility for Your Vessel</h1>
+
+            <!-- Search Bar Section -->
+            <section class="main_search" style="position: relative;">
+                <div class="search_container">
+                    <select name="vessel" id="vessel_select">
+                        <option value="vessel_name">Vessel Name</option>
+                        <option value="owner_name">Owner Name</option>
+                    </select>
+                    <div class="separator"></div>
+                    <input type="text" id="search_input" placeholder="Input Vessel Name / Owner Name">
+                    <ul id="suggestions_list" class="suggestions"></ul>
+                    <button class="search_btn" onclick="searchVessel()">Search</button>
+                </div>
+                <div class="question_tip">
+                    <div class="circle">?</div>
+                    <div class="tooltip">Please enter the keyword of Vessel Name or Owner Name to retrieve information.</div>
+                </div>
+            </section>
+        </div>
+    </header>
+
+    <section class="path-navigation">
+        <div class="breadcrumb">
+            <a href="searchpage.html">Search Page</a> &gt; <a href="owners.html">Owner Collection</a> &gt; <a href="owner_vessel.html">Vessel Collection</a>
+        </div>
+        <button class="back_button" onclick="goBack()">Back</button>
+    </section>
+
+    
+    <!-- Owner Name Section -->
+    <section class="owner_section">
+        <div class="title_container">
+            <h2 class="owner_title">Owner Name</h2>
+        </div>
+        <div class="owner_info">
+            <div class="owner_box">
+                <p id="owner_name"></p> 
+            </div>
+            <div class="number_box">
+                <p id="vessel_count"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vessel Collection Section -->
+    <section class="vessel_collection">
+        <h2 class="prefix_title">Vessel Collection</h2>
+        <div class="column_name">
+            <div class="column_header">Vessel Name</div>
+            <div class="column_header">Vessel Details</div>
+        </div>
+        <div class="vessel_list" id="vessel_list">
+
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 MESD. All Rights Reserved.</p>
+    </footer>
+
+    <script src="/js/header.js"></script>
+    <script src="/js/owner_vessel.js"></script>
+</body>
+</html>

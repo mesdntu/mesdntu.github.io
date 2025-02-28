@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Development Page</title>
+    <link rel="stylesheet" href="/css/header.css"> 
+    <link rel="stylesheet" href="/css/form.css"> 
+</head>
+
+<body>
+
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="/images/ntu_logo.png" alt="NTU Logo" class="ntu_logo">
+                </a>
+                <img src="/images/mesd_logo.png" alt="MESD Logo" class="mesd_logo">
+            </div>
+            <h1>Check the Biofuel Compatibility for Your Vessel</h1>
+
+            <!-- Search Bar Section -->
+            <section class="main_search" style="position: relative;">
+                <div class="search_container">
+                    <select name="vessel" id="vessel_select">
+                        <option value="vessel_name">Vessel Name</option>
+                        <option value="owner_name">Owner Name</option>
+                    </select>
+                    <div class="separator"></div>
+                    <input type="text" id="search_input" placeholder="Input Vessel Name / Owner Name">
+                    <ul id="suggestions_list" class="suggestions"></ul>
+                    <button class="search_btn" onclick="searchVessel()">Search</button>
+                </div>
+                <div class="question_tip">
+                    <div class="circle">?</div>
+                    <div class="tooltip">Please enter the keyword of Vessel Name or Owner Name to retrieve information.</div>
+                </div>
+            </section>
+        </div>
+    </header>
+
+    <main id="flowchart">
+
+        <section class="path-navigation">
+            <div class="breadcrumb">
+                <a href="../pages/searchpage.html">Search Page</a> &gt; <a href="form.html">Form Page</a>
+            </div>
+            <button class="back_button" onclick="goBack()">Back</button>
+        </section>
+
+        <p class="question-intro">Please answer the following questions to determine your vessel's biofuel compatibility. Choose "Yes" or "No" to proceed.</p>
+
+
+        <!-- 问题 1 -->
+        <div class="question" id="q1">
+            <h2>Q1: Is your vessel registered with the Maritime Port Authority (MPA) of Singapore?</h2>
+            <button class="form_btn" onclick="nextStep('q2', true, 'Proceed to obtain MPA FSC approval.')">Yes</button>
+            <button class="form_btn" onclick="nextStep('q2', false, 'Contact the appropriate regulatory body for approvals.')">No</button>
+        </div>
+
+        <!-- 问题 2 -->
+        <div class="question" id="q2" style="display: none;">
+            <h2>Q2: Do you have operational clearance for Singapore port waters?</h2>
+            <button class="form_btn" onclick="nextStep('q3', true, 'Proceed with OMS approval.')">Yes</button>
+            <button class="form_btn" onclick="nextStep('q3', false, 'Ensure necessary port approvals are obtained.')">No</button>
+        </div>
+
+        <!-- 问题 3 -->
+        <div class="question" id="q3" style="display: none;">
+            <h2>Q3: Do you have a certificate from the engine maker that confirms your engine is ready for B100 usage?</h2>
+            <button class="form_btn" onclick="nextStep('q4', true, 'Upload the certification for verification and then proceed to documentation compliance.')">Yes</button>
+            <button class="form_btn" onclick="nextStep('q4', false, 'Engage the engine maker for evaluation and certification.')">No</button>
+        </div>
+
+        <!-- 问题 4 -->
+        <div class="question" id="q4" style="display: none;">
+            <h2>Q4: Have you obtained a NOx Technical File or other emissions-related certificates for compliance?</h2>
+            <button class="form_btn" onclick="nextStep('q5', true, 'Attach the relevant certificates.')">Yes</button>
+            <button class="form_btn" onclick="nextStep('q5', false, 'Apply for emissions compliance certification.')">No</button>
+        </div>
+
+        <!-- 问题 5 -->
+        <div class="question" id="q5" style="display: none;">
+            <h2>Q5: Do you have comprehensive documentation for all engines and equipment involved in the biofuel trial?</h2>
+            <button class="form_btn" onclick="nextStep('q6', true, 'Ensure it includes per-cylinder displacement data.')">Yes</button>
+            <button class="form_btn" onclick="nextStep('q6', false, 'Compile the required documentation.')">No</button>
+        </div>
+
+        <!-- 问题 6 -->
+        <div class="question" id="q6" style="display: none;">
+            <h2>Q6: Do you have a Certificate of Registry, Load Line Certificate, and Certificate of Insurance?</h2>
+            <button class="form_btn" onclick="nextStep('q7', true, 'Attach these certificates.')">Yes</button>
+            <button class="form_btn" onclick="nextStep('q7', false, 'Obtain and update the records.')">No</button>
+        </div>
+
+        <!-- 问题 7 -->
+        <div class="question" id="q7" style="display: none;">
+            <h2>Q7: Have you conducted a risk assessment for vessel operations during the biofuel trial?</h2>
+            <button class="form_btn" onclick="nextStep('q8', true, 'Implement risk control measures as per the assessment.')">Yes</button>
+            <button class="form_btn" onclick="nextStep('q8', false, 'Perform a detailed risk assessment.')">No</button>
+        </div>
+
+        <!-- 问题 8 -->
+        <div class="question" id="q8" style="display: none;">
+            <h2>Q8: Are contingency plans established for trial operations?</h2>
+            <button class="form_btn" onclick="nextStep('q9', true, 'Include details of key stakeholders and communication protocols.')">Yes</button>
+            <button class="form_btn" onclick="nextStep('q9', false, 'Develop comprehensive contingency plans.')">No</button>
+        </div>
+
+        <!-- 问题 9 -->
+        <div class="question" id="q9" style="display: none;">
+            <h2>Q9: Do your NOx emissions comply with Regulation 13, Annex VI of the Prevention of Pollution of the Sea (Air) Regulations 2022?</h2>
+            <button class="form_btn" onclick="nextStep('q10', true, 'Proceed with trial documentation.')">Yes</button>
+            <button class="form_btn" onclick="nextStep('q10', false, 'Investigate and apply measures to meet compliance.')">No</button>
+        </div>
+
+        <!-- 问题 10 -->
+        <div class="question" id="q10" style="display: none;">
+            <h2>Q10: Have you validated emissions data with appropriate regulatory bodies?</h2>
+            <button class="form_btn" onclick="nextStep('q11', true, 'Upload the validation report.')">Yes</button>
+            <button class="form_btn" onclick="nextStep('q11', false, 'Coordinate with regulatory bodies for emissions testing.')">No</button>
+        </div>
+
+        <!-- 问题 11 -->
+        <div class="question" id="q11" style="display: none;">
+            <h2>Q11: Are operational details such as tug specifications, routes, and contingency plans documented?</h2>
+            <button class="form_btn" onclick="nextStep('q12', true, 'Proceed to maintenance and monitoring.')">Yes</button>
+            <button class="form_btn" onclick="nextStep('q12', false, 'Document operational details thoroughly.')">No</button>
+        </div>
+
+        <!-- 问题 12 -->
+        <div class="question" id="q12" style="display: none;">
+            <h2>Q12: Have you outlined the biofuel loading and bunkering process?</h2>
+            <button class="form_btn" onclick="nextStep('q13', true, 'Ensure safety measures are detailed.')">Yes</button>
+            <button class="form_btn" onclick="nextStep('q13', false, 'Develop and include these procedures in the plan.')">No</button>
+        </div>
+
+        <!-- 问题 13 -->
+        <div class="question" id="q13" style="display: none;">
+            <h2>Q13: Do you have a scheduled maintenance plan in place?</h2>
+            <button class="form_btn" onclick="nextStep('q14', true, 'Ensure engine component monitoring is included.')">Yes</button>
+            <button class="form_btn" onclick="nextStep('q14', false, 'Develop a detailed maintenance schedule.')">No</button>
+        </div>
+
+        <!-- 问题 14 -->
+        <div class="question" id="q14" style="display: none;">
+            <h2>Q14: Have you monitored the impact of biofuels on key engine components (e.g., injectors, filters)?</h2>
+            <button class="form_btn" onclick="nextStep('q15', true, 'Document observations in trial reports.')">Yes</button>
+            <button class="form_btn" onclick="nextStep('q15', false, 'Conduct trials and update documentation.')">No</button>
+        </div>
+
+        <!-- 问题 15 -->
+        <div class="question" id="q15" style="display: none;">
+            <h2>Q15: Have you inspected seals, gaskets, and fuel systems for B100 compatibility?</h2>
+            <button class="form_btn" onclick="nextStep('q16', true, 'Document their condition and performance with biofuels.')">Yes</button>
+            <button class="form_btn" onclick="nextStep('q16', false, 'Conduct inspections and update findings.')">No</button>
+        </div>
+
+        <!-- 问题 16 -->
+        <div class="question" id="q16" style="display: none;">
+            <h2>Q16: Have you analyzed lube oil samples for compatibility impacts?</h2>
+            <button class="form_btn" onclick="nextStep('q17', true, 'Include findings in the trial documentation.')">Yes</button>
+            <button class="form_btn" onclick="nextStep('q17', false, 'Perform lube oil analysis before proceeding.')">No</button>
+        </div>
+
+        <!-- 问题 17 -->
+        <div class="question" id="q17" style="display: none;">
+            <h2>Q17: Has the fuel pump assembly been checked for potential issues?</h2>
+            <button class="form_btn" onclick="nextStep('q18', true, 'Document observations and recommendations.')">Yes</button>
+            <button class="form_btn" onclick="nextStep('q18', false, 'Inspect and record potential risks.')">No</button>
+        </div>
+
+        <!-- 问题 18 -->
+        <div class="question" id="q18" style="display: none;">
+            <h2>Q18: Do engine filters meet the required standards for biofuel usage?</h2>
+            <button class="form_btn" onclick="nextStep('q19', true, 'Include findings in the trial documentation and proceed to Material Compatibility of Metals.')">Yes</button>
+            <button class="form_btn" onclick="nextStep('q19', false, 'Replace or upgrade filters as needed.')">No</button>
+        </div>
+
+        <!-- 问题 19 -->
+        <div class="question" id="q19" style="display: none;">
+            <h2>Q19: Are all metal components (e.g., fuel lines, injectors) free from materials like zinc or galvanized coatings, which may react with B100?</h2>
+            <button class="form_btn" onclick="nextStep('q20', true, 'Document observations in trial reports.')">Yes</button>
+            <button class="form_btn" onclick="nextStep('q20', false, 'Replace with stainless steel or compatible materials.')">No</button>
+        </div>
+
+        <!-- 问题 20 -->
+        <div class="question" id="q20" style="display: none;">
+            <h2>Q20: Are your fuel storage tanks equipped with heating systems to handle B100 in low-temperature environments?</h2>
+            <button class="form_btn" onclick="nextStep('q21', true, 'Ensure proper operation during trials.')">Yes</button>
+            <button class="form_btn" onclick="nextStep('q21', false, 'Consider adding heating systems or blending with lower biodiesel percentages during colder seasons.')">No</button>
+        </div>
+
+        <!-- 问题 21 -->
+        <div class="question" id="q21" style="display: none;">
+            <h2>Q21: Have you performed a tank cleaning to remove residual deposits before introducing B100?</h2>
+            <button class="form_btn" onclick="nextStep('q22', true, 'Proceed with biofuel storage.')">Yes</button>
+            <button class="form_btn" onclick="nextStep('q22', false, 'Schedule a tank cleaning to avoid potential clogging from loosened sediments.')">No</button>
+        </div>
+
+        <!-- 问题 22 -->
+        <div class="question" id="q22" style="display: none;">
+            <h2>Q22: Have you verified the oxidation stability of the B100 fuel to ensure it meets ASTM D6751 or EN 14214 standards?</h2>
+            <button class="form_btn" onclick="nextStep('q23', true, 'Document observations and recommendations.')">Yes</button>
+            <button class="form_btn" onclick="nextStep('q23', false, 'Conduct stability tests or obtain certificates from the supplier.')">No</button>
+        </div>
+
+        <!-- 问题 23 -->
+        <div class="question" id="q23" style="display: none;">
+            <h2>Q23: Are you using antioxidant additives to extend the storage life of B100?</h2>
+            <button class="form_btn" onclick="nextStep('q24', true, 'Ensure proper dosing.')">Yes</button>
+            <button class="form_btn" onclick="nextStep('q24', false, 'Consult your fuel supplier for recommended additives.')">No</button>
+        </div>
+
+        <!-- 问题 24 -->
+        <div class="question" id="q24" style="display: none;">
+            <h2>Q24: Have you established safety protocols for handling B100 spills, considering its higher solvency compared to diesel?</h2>
+            <button class="form_btn" onclick="nextStep('q25', true, 'Include these in operational guidelines.')">Yes</button>
+            <button class="form_btn" onclick="nextStep('q25', false, 'Develop spill containment and cleanup procedures.')">No</button>
+        </div>
+
+        <!-- 问题 25 -->
+        <div class="question" id="q25" style="display: none;">
+            <h2>Q25: Are all crew members trained in handling biofuels, including emergency response for fuel leaks or system failures?</h2>
+            <button class="form_btn" onclick="showSummary()">Yes</button>
+            <button class="form_btn" onclick="showSummary()">No</button>
+        </div>
+        
+
+        <!-- 总结页面 -->
+        <div class="info" id="summary" style="display: none;">
+            <h2>Checklist Summary</h2>
+            <ul id="adviceList"></ul>
+        </div>
+
+    </main>
+    
+
+    <footer>
+        <p>© 2024 MESD. All Rights Reserved.</p>
+    </footer>
+
+    <script src="/js/form.js"></script>
+</body>
+
+</html>

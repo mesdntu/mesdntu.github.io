@@ -1,0 +1,122 @@
+/* 通用样式 */
+body {
+    font-family: 'Arimo', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #FFFFFF;
+}
+
+header {
+    position: absolute;
+    width: 1220px;
+    height: 151px;
+    left: 0px;
+    top: 0px;
+    padding: 0;
+    margin: 0;
+}
+
+.ntu_logo {
+    width: 370px;
+    height: 68px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 21px;
+    top: 0px;
+}
+
+main {
+    width: 100%;
+    max-width: 1220px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* 改为顶部对齐 */
+    margin-top: 60px;  /* 适当减少上方间距 */
+}
+
+.main_image img {
+    width: 466px;
+    height: 469px;
+    margin-left: 15%;
+    margin-top: 40px; /* 将图片向下移动 */
+}
+
+.main_words {
+    max-width: 565px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-right: 6%;
+    margin-top: 130px; /* 将 main_words 向上移动 */
+}
+
+.main_words h1 {
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 41px;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.main_words p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.login_btn, .contact_btn {
+    width: 115px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.login_btn {
+    background-color: #403B84;
+    color: #FFF;
+    border: none;
+}
+
+.login_btn:hover {
+    background-color: #2b2862; /* 加深的颜色 */
+    color: #FFF;
+}
+
+.contact_btn {
+    background-color: #FFF;
+    color: #000;
+    border: 1px solid #000;
+}
+
+.contact_btn:hover {
+    background-color: #e0e0e0; /* 加深的颜色 */
+    color: #000;
+}
+
+.contact_btn:active {
+    background-color: #000; /* 点击后背景颜色变黑 */
+    color: #FFF; /* 点击后文字颜色变白 */
+    border: 1px solid #000;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 16px;
+    color: #000;
+}

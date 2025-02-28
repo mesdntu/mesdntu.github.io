@@ -1,0 +1,141 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    flex: 0 0 auto;
+}
+
+main {
+    flex: 1 0 auto; /* 主内容区域填充剩余空间 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+/* Center the h2 and back button */
+.heading-container {
+    display: flex;
+    justify-content: space-between; /* Align h2 to the left, button to the right */
+    align-items: center;
+    width: 100%; /* Ensure it takes full width */
+    max-width: 800px; /* Optional: Limit the container width */
+    margin-bottom: 20px;
+    vertical-align: middle;
+}
+
+
+.question {
+    background: #fff;
+    padding: 25px;
+    margin-bottom: 1rem;
+    padding-top: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 150px;
+    color: #333;
+    font-size: 14px;
+    width: 1000px;
+    height: 180px;
+    user-select: none;
+    position: relative;
+}
+
+.info {
+    background: #e0fbfc;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.question button {
+    position: absolute; /* 绝对定位 */
+    bottom: 10px; /* 距离底部10px */
+}
+
+.question button:first-child {
+    left: 10px; /* 第一个按钮（Yes）靠左 */
+}
+
+.question button:last-child {
+    left: 100px; /* 第二个按钮（No）右移 */
+}
+
+button {
+    margin-top: 20px;
+    background: #028090;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin-right: 0.5rem;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 1rem;
+    user-select: none;
+}
+
+button:hover {
+    background: #05668d;
+}
+
+button:focus {
+    outline: none;
+}
+
+
+
+/* Summary Section */
+#summary {
+    background: #fefefe;
+    padding: 2rem;
+    margin-top: 2rem;
+    border: 2px solid #028090;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    max-width: 900px;
+    width: 100%;
+    text-align: left;
+    color: #333;
+}
+
+#summary h2 {
+    color: #028090;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+#summary ul {
+    list-style-type: disc;
+    margin: 1rem 0 0 1.5rem;
+    padding: 0;
+}
+
+#summary ul li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+
+
+footer {
+    flex: 0 0 auto;
+    text-align: center;
+    padding: 20px;
+    background-color: #F5F5F7;
+    color: #151C64;
+    font-size: 14px;
+    width: 100%;
+}
